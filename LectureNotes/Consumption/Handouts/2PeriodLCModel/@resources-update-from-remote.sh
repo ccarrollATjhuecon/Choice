@@ -1,0 +1,1 @@
+@resources/bash/@resources-update-from-remote.sh

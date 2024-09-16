@@ -1,0 +1,454 @@
+% variables:
+%% principles:
+%% - Levels (Lvl) are boldface italic
+%% - Normalized (Nrm) are plain
+%% - Aggregate variables are marked by Agg and are upper case
+%% - Individual variables are marked by Ind and are lower case
+%% - The combination of Ind and Agg is marked by All
+%% - If the problem has only one shock, the Ind and Agg can be omitted
+
+\newcommand{\aLvl}{\boldsymbol{\mathit{a}}}
+\newcommand{\bLvl}{\boldsymbol{\mathit{b}}}
+\newcommand{\cLvl}{\boldsymbol{\mathit{c}}}
+\newcommand{\dLvl}{\boldsymbol{\mathit{d}}}
+\newcommand{\eLvl}{\boldsymbol{\mathit{e}}}
+\newcommand{\fLvl}{\boldsymbol{\mathit{f}}}
+\newcommand{\gLvl}{\boldsymbol{\mathit{g}}}
+\newcommand{\hLvl}{\boldsymbol{\mathit{h}}}
+\newcommand{\iLvl}{\boldsymbol{\mathit{i}}}
+\newcommand{\jLvl}{\boldsymbol{\mathit{j}}}
+\newcommand{\kLvl}{\boldsymbol{\mathit{k}}}
+\newcommand{\mLvl}{\boldsymbol{\mathit{m}}}
+\newcommand{\nLvl}{\boldsymbol{\mathit{n}}}
+\newcommand{\pLvl}{\boldsymbol{\mathit{p}}}
+\newcommand{\qLvl}{\boldsymbol{\mathit{q}}}
+\newcommand{\rLvl}{\boldsymbol{\mathit{r}}}
+\newcommand{\sLvl}{\boldsymbol{\mathit{s}}}
+\newcommand{\tLvl}{\boldsymbol{\mathit{t}}}
+\newcommand{\uLvl}{\boldsymbol{\mathit{u}}}
+\newcommand{\vLvl}{\boldsymbol{\mathit{v}}}
+\newcommand{\wLvl}{\boldsymbol{\mathit{w}}}
+\newcommand{\xLvl}{\boldsymbol{\mathit{x}}}
+\newcommand{\yLvl}{\boldsymbol{\mathit{y}}}
+\newcommand{\zLvl}{\boldsymbol{\mathit{z}}}
+
+\newcommand{\ALvl}{\boldsymbol{\mathit{A}}}
+\newcommand{\BLvl}{\boldsymbol{\mathit{B}}}
+\newcommand{\CLvl}{\boldsymbol{\mathit{C}}}
+\newcommand{\DLvl}{\boldsymbol{\mathit{D}}}
+\newcommand{\ELvl}{\boldsymbol{\mathit{E}}}
+\newcommand{\FLvl}{\boldsymbol{\mathit{F}}}
+\newcommand{\GLvl}{\boldsymbol{\mathit{G}}}
+\newcommand{\HLvl}{\boldsymbol{\mathit{H}}}
+\newcommand{\ILvl}{\boldsymbol{\mathit{I}}}
+\newcommand{\JLvl}{\boldsymbol{\mathit{J}}}
+\newcommand{\KLvl}{\boldsymbol{\mathit{K}}}
+\newcommand{\LLvl}{\boldsymbol{\mathit{L}}}
+\newcommand{\MLvl}{\boldsymbol{\mathit{M}}}
+\newcommand{\NLvl}{\boldsymbol{\mathit{N}}}
+\newcommand{\OLvl}{\boldsymbol{\mathit{O}}}
+\newcommand{\PLvl}{\boldsymbol{\mathit{P}}}
+\newcommand{\QLvl}{\boldsymbol{\mathit{Q}}}
+\newcommand{\RLvl}{\boldsymbol{\mathit{R}}}
+\newcommand{\SLvl}{\boldsymbol{\mathit{S}}}
+\newcommand{\TLvl}{\boldsymbol{\mathit{T}}}
+\newcommand{\ULvl}{\boldsymbol{\mathit{U}}}
+\newcommand{\VLvl}{\boldsymbol{\mathit{V}}}
+\newcommand{\WLvl}{\boldsymbol{\mathit{W}}}
+\newcommand{\XLvl}{\boldsymbol{\mathit{X}}}
+\newcommand{\YLvl}{\boldsymbol{\mathit{Y}}}
+\newcommand{\ZLvl}{\boldsymbol{\mathit{Z}}}
+
+%%  Ratios to permanent income are normal face
+\newcommand{\aNrm}{a}
+\newcommand{\bNrm}{b}
+\newcommand{\cNrm}{c}
+\newcommand{\dNrm}{d}
+\newcommand{\eNrm}{e}
+\newcommand{\fNrm}{f}
+\newcommand{\hNrm}{h}
+\newcommand{\iNrm}{i}
+\newcommand{\jNrm}{j}
+\newcommand{\kNrm}{k}
+\newcommand{\mNrm}{m}
+\newcommand{\pNrm}{p}
+\newcommand{\sNrm}{s}
+\newcommand{\vNrm}{v}
+\newcommand{\yNrm}{y}
+\newcommand{\zNrm}{z}
+
+\newcommand{\ANrm}{A}
+\newcommand{\BNrm}{B}
+\newcommand{\CNrm}{C}
+\newcommand{\DNrm}{D}
+\newcommand{\ENrm}{E}
+\newcommand{\FNrm}{F}
+\newcommand{\HNrm}{H}
+\newcommand{\INrm}{I}
+\newcommand{\JNrm}{J}
+\newcommand{\KNrm}{K}
+\newcommand{\MNrm}{M}
+\newcommand{\PNrm}{P}
+\newcommand{\SNrm}{S}
+\newcommand{\VNrm}{V}
+\newcommand{\YNrm}{Y}
+\newcommand{\ZNrm}{Z}
+
+%% Individual-level (idosyncratic) variables
+\newcommand{\permShkInd}{\psi}     % (purely) permanent
+\newcommand{\permShk}{\permShkInd} % unspecified (but only one) shock
+\newcommand{\PermShk}{\PermShkAgg} % unspecified (but only one) shock
+\newcommand{\tranShkInd}{\xi}      % (purely) transitory
+\newcommand{\permShkIndMin}{\Min{\permShkInd}}
+\newcommand{\permShkIndMax}{\Max{\permShkInd}}
+\newcommand{\prstShkInd}{\phi}     % persistent not permanent
+\newcommand{\prstShkAgg}{\Phi}     % persistent not permanent
+\newcommand{\prstShk}{\phi}     % unspecified (unique)
+\newcommand{\prstShkIndMin}{\Min{\prstShkInd}}     % persistent not permanent
+\newcommand{\prstShkIndMax}{\Max{\prstShkInd}}     % persistent not permanent
+\newcommand{\tranShkMin}{\Min{\xi}}
+\newcommand{\tranShkMax}{\Max{\xi}}
+
+%% Transitory shock for employed individuals
+\newcommand{\tranShkEmp}{\theta}     % ind
+\newcommand{\TranShkEmp}{\Theta}     % agg
+\newcommand{\tranShkEmpMin}{\Min{\tranShkEmp}}    
+\newcommand{\tranShkEmpMax}{\Max{\tranShkEmp}}    
+\newcommand{\IncUnemp}{\mu}  % Income in unemployment
+
+%% Agg variables (also affect individuals)
+\newcommand{\TranShkAgg}{\Theta}   % 
+\newcommand{\PermShkAgg}{\Psi}  % 
+
+%% Shock std and var
+\newcommand{\std}{\sigma}
+\newcommand{\tranShkIndStd}{\std_{\tranShkInd}}     % 
+\newcommand{\tranShkIndVar}{\std^{2}_{\tranShkInd}} % 
+\newcommand{\TranShkAggStd}{\std_{\TranShkAgg}}     %
+\newcommand{\TranShkAggVar}{\std^{2}_{\TranShkAgg}} %
+
+%% Combo variables (combining Ind and Agg) 
+\newcommand{\PermShkAll}{\mathbf{\Psi}}
+\newcommand{\PermShkAllStd}{\std_{\PermShkAll}}
+\newcommand{\PermShkAllVar}{\std^{2}_{\PermShkAll}}
+
+\newcommand{\PermLvlAgg}{\boldsymbol{\mathit{P}}}      % 
+\newcommand{\permLvlInd}{\boldsymbol{\mathit{p}}}      % 
+\newcommand{\permLvl}{\permLvlInd}      % 
+\newcommand{\PermLvl}{\PermLvlAgg}      % 
+\newcommand{\PermLvlAll}{\mathfrak{P}}
+
+\newcommand{\tranShkAll}{\pmb{\xi}} 
+\newcommand{\TranShkAll}{\pmb{\Xi}}  % doesn't make sense ; \tranShkAll already includes 
+\newcommand{\tranShkAllStd}{\std_{\tranShkAll}}
+\newcommand{\tranShkAllVar}{\std^{2}_{\tranShkAll}}
+
+%% MPC min and max values
+\newcommand{\MPCmin}{\Min{\MPC}}
+\newcommand{\MPCmax}{\Max{\MPC}}
+\newcommand{\MPCmaxmax}{\Max{\Max{\MPC}}}
+\newcommand{\MPCmaxmin}{\Max{\Min{\MPC}}}
+\newcommand{\MPCminmin}{\Min{\Min{\MPC}}}
+
+%% Growth factors
+\newcommand{\PermGroFacAgg}{\mathscr{G}}
+\newcommand{\permGroFacInd}{\mathit{G}}
+\newcommand{\PermGroFac}{\mathcal{G}}
+\newcommand{\PermGroFacRnd}{\Rnd{\PermGroFac}}       % normalization including shock
+\newcommand{\PermGroFacAdj}{\Min{\PermGroFac}}
+\newcommand{\PermGroFacuAdj}{\Min{\Min{\PermGroFac}}}
+\newcommand{\PermGroRte}{g}
+
+%% Other factors and rates 
+%%% probability of remaining \Alive is 1 - prob of dying
+\newcommand{\Alive}{\mathcal{L}}\renewcommand{\Alive}{\mathcal{L}}
+\newcommand{\diePrb}{\mathsf{d}} % Continuous time death rate (annual)
+\newcommand{\DiePrb}{\mathsf{D}} % Discrete-time one-period death rate
+
+\newcommand{\DeprFac}{\daleth}
+\newcommand{\deprRte}{\delta}  % 
+\newcommand{\DiscFac}{\beta}
+\newcommand{\DiscFacAlt}{\beth}
+\newcommand{\DiscAlt}{}\renewcommand{\DiscAlt}{\beth}
+\newcommand{\DiscAltuAdj}{\Min{\Min{\beth}}}
+\newcommand{\DiscFacRaw}{\beta}
+\newcommand{\DiscFacLiv}{\Min{\DiscFacRaw}}
+\newcommand{\DiscRte}{\nu} % vartheta is too easily confused with theta
+\newcommand{\discRte}{\nu} % 
+
+\newcommand{\APFac}{\text{\pmb{\Thorn}}} % Former \Pat
+\newcommand{\APFacDefn}{\hyperlink{APFacDefn}{\textrm{APF}}}
+
+\newcommand{\GPFac}{\APFac/{\PermGroFac}}
+\newcommand{\GPFacRaw}{\APFac/{\PermGroFac}}
+\newcommand{\GPFacMod}{\APFac/{\PermGroFacAdj}}
+\newcommand{\RPFac}{\APFac/{\Rfree}}
+
+\newcommand{\RPRte}{\text{\thorn}_{\rfree}}
+\newcommand{\GPRte}{\text{\thorn}_{\PermGroRte}}
+\newcommand{\APRte}{\text{\thorn}}
+
+\newcommand{\EPermShkInv}{\Ex[\permShk^{-1}]}  % Formerly EpShkInv
+\newcommand{\InvEPermShkInv}{\Min{\permShk}} % Formerly InvEpShkInv
+\newcommand{\uInvEuPermShk}{\Min{\Min{\permShk}}} % Formerly {\uInvEpShkuInv}
+
+\newcommand{\RfreeEff}{\bar{\Rfree}} % Blanchard-adjusted interest rate
+
+\newcommand{\PopnGroFac}{\Xi}
+\newcommand{\PopnGroRte}{\xi}
+\newcommand{\PopnLvl}{\pmb{\mathrm{N}}}
+  
+\newcommand{\LivPrb}{\Alive}
+\newcommand{\livPrb}{\ell}
+
+\newcommand{\pNotZero}{(1-\pZero)}
+
+\newcommand{\CARA}{\alpha}
+\newcommand{\CRRA}{\rho}
+\newcommand{\MPC}{\kappa}
+\newcommand{\MPCFunc}{\pmb{\kappa}}
+\newcommand{\pZero}{q}
+
+\newcommand{\rfree}{\mathsf{r}}   % The net return rate on the safe asset
+\newcommand{\Rfree}{\mathsf{R}}   % The return factor on the safe asset 
+\newcommand{\RSave}{\Min{\Rfree}}
+\newcommand{\rsave}{\Min{\rfree}}
+\newcommand{\RBoro}{\bar{\Rfree}}
+\newcommand{\rboro}{\bar{\rfree}}
+
+\newcommand{\Risky}{\mathbf{R}}         % The return factor on the risky asset
+\newcommand{\risky}{\mathbf{r}}         % The arithmetic return rate E[\Risky] - 1
+\newcommand{\riskyELog}{\risky}         % The arithmetic return rate \Risky - 1
+\newcommand{\riskyELev}{\boldsymbol{r}} % The geometric  return rate \log \Risky
+\newcommand{\riskyshare}{{\varsigma}}
+\newcommand{\riskyvar}{\std^{2}_{\risky}}
+\newcommand{\Rport}{\mathfrak{R}}       % Portfolio -weighted return
+\newcommand{\rport}{\mathfrak{r}}
+
+\newcommand{\uPPP}{{{\mathrm{u}^{\prime\prime\prime}}}}
+\newcommand{\uPP}{{{\mathrm{u}^{\prime\prime}}}}
+\newcommand{\uP}{{{\mathrm{u}^{\prime}}}}
+\newcommand{\util}{u}
+
+\newcommand{\Kap}{K}
+\newcommand{\kap}{k}
+
+\newcommand{\leiShare}{\zeta} % 
+
+\newcommand{\MPSmin}{\pZero^{1/\CRRA} \RPFac}
+\newcommand{\MPSmax}{\RPFac}
+
+\newcommand{\PDV}{{\mathbb{P}}} % 
+\newcommand{\Wage}{{\mathsf{W}}}
+\newcommand{\wage}{{\mathsf{w}}}
+
+\newcommand{\TaxLev}{T}
+\newcommand{\Tax}{}
+\newcommand{\TaxFree}{{\cancel{\Tax}}}
+
+\newcommand{\Alt}{\grave}
+
+\newcommand{\urate}{{\mho}}
+\newcommand{\erate}{{\cancel{\mho}}}
+\newcommand{\unins}{{\zeta}}
+
+\newcommand{\Labor}{\mathrm{L}}
+\newcommand{\labor}{\ell}
+
+\newcommand{\EEndMap}{{\mathsf{E}}}
+
+\newcommand{\CEndFunc}{{\mathfrak{C}}}
+\newcommand{\cEndFunc}{{\mathfrak{c}}}
+
+\newcommand{\uFuncInv}{\rotatebox{180}{$\uFunc$}}
+\newcommand{\muFuncInv}{{\rotatebox{180}{$\uFunc$}}}
+
+\newcommand{\HARKdocs}{\href{https://docs.econ-ark.org}{documentation}}
+\newcommand{\HARKrepo}{\texttt{\href{https://github.com/econ-ark/HARK}{HARK}}}
+
+\newcommand{\Rnorm}{{\mathcal{R}}}    % Normalized version of riskless return factor
+\newcommand{\rnorm}{{\mathit{r}}}    % Normalized version of riskless rate of return
+
+\newcommand{\EpremLog}{\varphi} % Not using regular \eprem because want to distinguish between \varphi = log E_{t}[\Phi_{t+1}] and \phi_{t} = E[\log \Phi_{t}]
+\newcommand{\EPrem}{\pmb{\varphi}} % equity premium
+\newcommand{\eprem}{\phi} % log equity premium
+
+\newcommand{\weight}{\omega}
+
+% oddities
+\newcommand{\FDist}{{\mathcal{F}}}
+\newcommand{\fDist}{{\mathcal{f}}}
+
+\newcommand{\aMin}{{\Min{\aNrm}}}
+
+\newcommand{\Nrml}{}\renewcommand{\Nrml}{\mathcal{N}}
+
+
+\newcommand{\TargetNrm}{\hat}   % Target 
+\newcommand{\mTrgNrm}{\TargetNrm{\mNrm}} % m where E[m_{t+1}]=m_{t}
+
+% pulled in from econtexShortcuts
+
+\newcommand{\cFuncAbove}{}
+\renewcommand{\cFuncAbove}{\Max{\cFunc}} 
+\newcommand{\cFuncBelow}{}
+\renewcommand{\cFuncBelow}{\Min{\cFunc}} 
+
+% Needed for cctwMoM
+
+\newcommand{\chiFunc}{\pmb{\chi}}
+\newcommand{\Chi}{{\mathrm{X}}} % capital chi is sometimes useful, and not native to LaTeX
+
+% From NARK
+
+% Let's define what we use the different LaTeX fonts for.
+
+% Research:
+% The (math) fonts that have a complete set of both upper and lower case characrers are:
+% - \mathrm (default), \mathscr, \mathbb, \mathsf, \mathbf, \mathit, \mathcal, \mathfrak, \mathbb
+% The following fonts do not have lowercase Greek letters
+% - \mathcal, \mathfrak, \mathbb
+% - use \mathcal, \mathfrak, \mathbb for 'oddities': things outside the defined scheme
+
+% Evolving ideas:
+% - FOR GREEK CHARACTERS ONLY: Use upper and lower case for Factor vs Rate
+\newcommand{\PopGroFac}{}
+\renewcommand{\PopGroFac}{\Xi}
+
+\newcommand{\popGroRte}{}
+\renewcommand{\popGroRte}{\xi}
+
+% There are two exceptions: 
+% - Roman G is a Growth factor and Roman g is the rate
+% - Roman R is a Growth factor and Roman r is the rate
+
+\newcommand{\PtyGroFac}{}
+\renewcommand{\PtyGroFac}{\mathscr{G}}
+
+\newcommand{\PtyGroRte}{}
+\renewcommand{\PtyGroRte}{\mathscr{g}}
+
+\newcommand{\ptyGroFac}{}
+\renewcommand{\ptyGroFac}{G}
+
+\newcommand{\ptyGroRte}{}
+\renewcommand{\ptyGroRte}{g}
+
+% agg vs ind?  upper vs lower conflicts with upper vs lower for factors and rates
+
+\newcommand{\Reals}{}
+\renewcommand{\Reals}{\mathbb{R}}
+
+% ------------------ Operators ------------------ 
+% Map between function spaces, blackboard boldface
+
+\newcommand{\TMap}{}
+\renewcommand{\TMap}{\mathbb{T}}                  % Bellman operator for normalized problem
+\newcommand{\Ex}{{\mathbb{E}}} % Expectations operator
+\newcommand{\Mean}{{\mathbb{M}}} % Mean operator
+\newcommand{\cncl}{} % cancellation
+\renewcommand\cncl[1]{{\cancel{#1}}}
+
+
+% ------------------ Modifiers ------------------ 
+
+\newcommand{\cnstr}[1]{\grave{#1}} %% Constrained
+\newcommand{\avg}{\bar}
+\newcommand{\Max}{\overline}
+\newcommand{\Min}{\underline}
+\newcommand{\Rnd}{\tilde}
+\newcommand{\Opt}{}\renewcommand{\Opt}{\breve}
+\newcommand{\Lvl}{\boldsymbol}
+
+
+% ------------------ Theorems ------------------ 
+\newtheorem{assumption}{Assumption}
+\newtheorem{claim}{Claim}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{fact}{Fact}
+\newtheorem{remark}{Remark}
+
+% ------------------ Relative Time ------------------ 
+\newcommand{\nxt}{\texttt{next}}
+\newcommand{\lst}{\texttt{last}}
+
+% Normalized return is special because G is normalizer
+% If there are any instances of RNrm that have been missed, make them stick out like a sore thumb
+\newcommand{\RNrm}{\cancel{\mathbf{R}}} 
+\newcommand{\RNrmByG}{\mathscr{R}}
+\newcommand{\RNrmByGRnd}{\Rnd{\mathscr{R}}}
+
+% Functions
+% - Functions are Roman not italicized
+%% systematic
+\newcommand{\aFunc}{\mathrm{a}}
+\newcommand{\bFunc}{\mathrm{b}}
+\newcommand{\cFunc}{\mathrm{c}}
+\newcommand{\dFunc}{\mathrm{d}}
+\newcommand{\eFunc}{\mathrm{e}}
+\newcommand{\fFunc}{\mathrm{f}}
+\newcommand{\gFunc}{\mathrm{g}}
+\newcommand{\hFunc}{\mathrm{h}}
+\newcommand{\iFunc}{\mathrm{i}}
+\newcommand{\jFunc}{\mathrm{j}}
+\newcommand{\kFunc}{\mathrm{k}}
+\newcommand{\mFunc}{\mathrm{m}}
+\newcommand{\nFunc}{\mathrm{n}}
+\newcommand{\pFunc}{\mathrm{p}}
+\newcommand{\sFunc}{\mathrm{s}}
+\newcommand{\rFunc}{\mathrm{r}}
+\newcommand{\uFunc}{\mathrm{u}}
+\newcommand{\vFunc}{\mathrm{v}}
+\newcommand{\wFunc}{\mathrm{w}}
+\newcommand{\xFunc}{\mathrm{x}}
+\newcommand{\yFunc}{\mathrm{y}}
+\newcommand{\zFunc}{\mathrm{z}}
+
+\newcommand{\vFuncLvl}{\mathbf{v}}
+% level idiosyncratic
+\newcommand{\cFuncLvl}{}  % in case already defined 
+\renewcommand{\cFuncLvl}{\boldsymbol{\mathrm{c}}}   % consumption function 
+\renewcommand{\vFuncLvl}{\boldsymbol{\mathrm{v}}}   % value function
+
+\newcommand{\AFunc}{\mathrm{A}}
+\newcommand{\BFunc}{\mathrm{B}}
+\newcommand{\CFunc}{\mathrm{C}}
+\newcommand{\DFunc}{\mathrm{D}}
+\newcommand{\EFunc}{\mathrm{E}}
+\newcommand{\FFunc}{\mathrm{F}}
+\newcommand{\GFunc}{\mathrm{G}}
+\newcommand{\HFunc}{\mathrm{H}}
+\newcommand{\IFunc}{\mathrm{I}}
+\newcommand{\JFunc}{\mathrm{J}}
+\newcommand{\KFunc}{\mathrm{K}}
+\newcommand{\LFunc}{\mathrm{L}}
+\newcommand{\MFunc}{\mathrm{M}}
+\newcommand{\NFunc}{\mathrm{N}}
+\newcommand{\OFunc}{\mathrm{O}}
+\newcommand{\PFunc}{\mathrm{P}}
+\newcommand{\QFunc}{\mathrm{Q}}
+\newcommand{\RFunc}{\mathrm{R}}
+\newcommand{\SFunc}{\mathrm{S}}
+\newcommand{\TFunc}{\mathrm{T}}
+\newcommand{\UFunc}{\mathrm{U}}
+\newcommand{\VFunc}{\mathrm{V}}
+\newcommand{\WFunc}{\mathrm{W}}
+\newcommand{\XFunc}{\mathrm{X}}
+\newcommand{\YFunc}{\mathrm{Y}}
+\newcommand{\ZFunc}{\mathrm{Z}}
+
+%% ad-hoc
+\newcommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
+
+% Variables
+
+\newcommand{\CDF}{\mathcal{F}}
+
+% urls
+% - Home of Econ-ARK
+\newcommand{\ARKurl}{\href{https://econ-ark.org}{Econ-ARK}}
+\newcommand{\REMARK}{\href{https://github.com/econ-ark/REMARK}{REMARK}}
+
+% Add default link for html material at github llorracc
+%\newcommand{\llorraccio}[1]{\href{https://llorracc.github.io/#1}{\texttt{#1}}}
