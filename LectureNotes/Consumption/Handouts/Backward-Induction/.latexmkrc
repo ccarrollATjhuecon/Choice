@@ -8,7 +8,7 @@ $clean_ext = "bbl nav out snm dvi idv mk4 css cfg tmp xref 4tc out aux log fls f
 $bibtex_use=2;
 $pdf_mode = 1;
 $rc_report = 1;
-@default_files = ('2PeriodLCModel');
+@default_files = ('Backward-Induction');
 ensure_path( 'BSTINPUTS', 
     '@resources/texlive/texmf-local/bibtex/bst//',
     '@resources/texlive/texmf-local/bibtex/bib//',
