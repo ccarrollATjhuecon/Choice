@@ -1,0 +1,149 @@
+\newcommand{\texname}{Backward-Induction}
+\input{@resources/tex-add-search-paths}
+\documentclass{scrartcl}
+\usepackage{econark-ark-required}\usepackage{econark-shortcuts}\usepackage{econark-multibib,llorracc-handouts,graphicx}\usepackage[authoryear]{natbib}
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\usepackage{xcolor}
+\usepackage[allbordercolors=blue]{hyperref}
+
+\begin{document}
+\handoutHeader
+
+
+\label{backward-induction-and-dynamic-programming} {\centerline {\LARGE Backward Induction and Dynamic Programming }}\vspace{0.15in}
+
+\section*{Models}
+\subsection*{One Period Model}\label{one-period-model}
+\begin{align*}
+  v_{T}(m_{T}) & = \max_{c_{T}}~~ u(c_{T}) 
+  \\ c_{T}     & \leq m_{T}
+                           \\  u^{\prime}(c) & >  0
+\end{align*}
+
+\subsection*{Two Period Model (Separable)}\label{two-period-model-separable}
+
+\begin{align*}
+  v_{T-1}(m_{T-1}) & = \max_{\{c_{T-1},c_{T}\}}~~ u(c_{T-1}) + \beta u(c_{T}) \\
+  v_{T-1}(m_{T-1}) & = \max_{c_{T-1}}~~ u(c_{T-1}) + \beta v_{T}(m_{T})
+\end{align*}
+
+\label{many-period-model-geometric-separable}
+\subsection*{Many Period Model (\href{https://en.wikipedia.org/wiki/Exponential_discounting}{Geometric Discounting}, \href{https://academic.oup.com/qje/article-abstract/99/4/817/1896484}{Time-Separable Utility})}
+
+\[ v_{t}(m_{t}) = \max_{\{c_{t},c_{t+1},...,c_{T}\}}~~\sum_{n = 0}^{T-t} \beta^{n} u(c_{t+n})
+\]
+
+\label{bellman-equation}
+\subsection*{\href{https://en.wikipedia.org/wiki/Bellman_equation}{Bellman Equation} for Many Period Model}
+
+\[ v_{t}(m_{t}) = \max_{c_{t}}~~u(c_{t}) + \beta v_{t+1}(m_{t+1})
+\]
+
+\subsection*{Terminology:}\label{terminology}
+
+\begin{enumerate}
+\item \href{https://en.wikipedia.org/wiki/Backward_induction}{``Backward induction''}
+\item \href{https://en.wikipedia.org/wiki/Dynamic_programming}{``Dynamic programming''}
+\end{enumerate}
+
+\label{requirements-for-bellman-solution}
+\section*{Requirements for Optimality of Bellman Solution}
+
+\label{state-variables-characterize-everything}
+\subsection*{1. State Variables Summarize Everything}
+
+\begin{itemize}
+\item History does not matter
+
+  \begin{itemize}
+
+  \item How you got to the state does not affect your optimal choices once there
+  \end{itemize}
+\item Problem is ``1st order Markov''
+\item Specifically, it is a \href{https://en.wikipedia.org/wiki/Markov_decision_process}{``Markov Decision Process''}
+
+  \begin{itemize}
+
+  \item This is most of what is studied in ``machine learning''
+  \item There are lots of proposed ways to make decisions
+  \end{itemize}
+\item Bellman problems are the subset where the decision is provably \emph{optimal}
+\end{itemize}
+
+\label{time-consistency}
+\subsection*{2. Time Consistency}
+
+\begin{itemize}
+\item The choice that seems optimal to you in any given date, \emph{also} would seem optimal from the perspective of any \emph{other} date.
+\item Time inconsistency violates Bellman's \href{https://www.ques10.com/p/8343/bellmans-principle-of-optimality}{``Principle of Optimality''}
+\end{itemize}
+
+\label{example-of-time-inconsistency}
+\subsubsection*{Example of Time Inconsistency}
+
+Suppose that when you are young, you feel strongly that you want to leave a bequest to your kids.
+\[ v_{T-1}(m_{T-1}) = u(c_{T-1}) + \beta \left(u(c_{T}) + w(\text{bequest})\right)
+\]
+
+From the perspective of period $T-1$, the optimal choice in period $T$ is to expect you will allocate whatever resources you have in $T$ such that
+\begin{align}
+u^{\prime}(c_{T}) &= w^{\prime}(\text{bequest})
+\end{align}
+yielding $v_{T}(m_{T})$ and given $v_{T}$ setting $c_{T-1}$ to 
+\begin{align}
+  \argmax_{c_{T-1}} = \max_{c_{T-1}} u(c_{T-1}) + v_{T}(m_{T})
+\end{align}
+
+But, oops, when you are old, you decide you don't care about the bequest after all.  So you consume everything.  Your preferences are different depending on the period from which you view them.
+
+\subsubsection*{\href{https://en.wikipedia.org/wiki/Commitment_device}{``commitment technologies''}}
+An interesting aspect of this is that it means that choices people end up making depend on whether the earlier self has the power to constrain the choices of the later self.  For example, if the younger self can create a ``trust fund'' for the kids which is legally untouchable by their older self, the outcome will be different than if they have no control over the disposition of resources in period $T$.
+
+\subsubsection*{``Na\"{\i}fs'' vs ``Sophisticates''}
+
+\begin{itemize}
+\item Na\"{\i}f: Doesn't realize their future preferences will differ from what they want now
+\item Sophisticates: Understand their future self and strategize accordingly
+\end{itemize}
+
+\subsubsection*{Difficulties with Models With Time Inconsistency}
+\begin{enumerate}
+\item There may be multiple equilibria
+\item They are often much more complicated than models with geometric discounting
+  \item Results are often difficult to distinguish from geometric discounting
+\end{enumerate}
+
+Time inconsistent behavior has been a key underpinning of much of the most rigorous research in \href{https://en.wikipedia.org/wiki/Dynamic_inconsistency#In_behavioral_economics}{``behavioral economics.''}
+
+\label{habits}
+\subsection*{Are Habits an Example of Time Inconsistency?}
+
+So, the rich-until-yesterday person will have a different ``habit stock'' from a person who was poor-until-yesterday.
+
+Habit formation is mathematized by including the habit's effect directly in the utility function itself:
+\[ u(c,h)
+\]
+so that 
+\[ u^{c}(100,h) \neq u^{c}(100,h+\bullet)
+\]
+for any $\bullet \neq 0$.
+
+Simplest case:
+\[ h_{t} = c_{t-1}
+\]
+
+More plausible case: For $\lambda < 1$:
+
+\[ h_{t} = c_{t-1} + \lambda c_{t-2} + \lambda^{T} c_{t-3} + ...
+\]
+
+But note that we can construct a first order Markov expression for $h_{t}$ because
+
+\[ h_{t-1} = c_{t-2} + \lambda c_{t-3} + \lambda^{T} c_{t-4} + ...
+\]
+so $h_{t}=c_{t}+\lambda h_{t-1}$.
+
+Therefore the variables $(m,h)$ each constitute first order Markov processes, so the problem as a whole is a 1st order Markov and does not exhibit time inconsistency, so it can be solved with Bellman apparatus.
+
+\end{document}
