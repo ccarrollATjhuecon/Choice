@@ -1,0 +1,641 @@
+\newcommand{\texname}{PerfForesightCRRA}
+\input{@resources/tex-add-search-paths}  % allow latex to find custom stuff
+\documentclass{scrartcl}
+\usepackage{econark-ark-required}\usepackage{econark-shortcuts}\usepackage{econark-multibib,llorracc-handouts,graphicx,hyperref}\usepackage[authoryear]{natbib}
+% Lines containing CDCPrivate are excised when the public version of the document is created 
+\usepackage{econark-shortcuts}
+\usepackage{wasysym}
+\usepackage[mathscr]{euscript}
+
+\begin{document}
+\handoutHeader
+
+{\centerline {\LARGE Consumption Under Perfect Foresight and CRRA Utility }}\vspace{0.15in}
+
+
+\section{The Problem}
+
+This handout solves the problem of a perfect foresight consumer with intertemporally separable CRRA utility
+$\uFunc(\bullet)= \bullet^{1-\CRRA}/(1-\CRRA)$ who discounts future utility
+geometrically by a factor $\DiscFac$ per period.  The finite horizon
+solution, whose last period is $T$, extends to the infinite horizon case if 
+intuitive `impatience' and `finite human wealth' conditions hold.
+
+The consumer's problem in period $t$ is to
+\begin{equation}
+\max \sum_{n=0}^{T-t} \DiscFac^{n} \uFunc(\cLvl_{t+n})                \label{eq:maxprob}
+\end{equation}
+subject to the constraints 
+\begin{equation}\begin{gathered}\begin{aligned}
+      \aLvl_{t}   & =  \mLvl_{t}-\cLvl_{t}
+\\    \bLvl_{t+1} & =  \aLvl_{t}\Rfree
+\\    \mLvl_{t+1} & =  \bLvl_{t+1}+\pLvl_{t+1}
+\end{aligned}\end{gathered}\end{equation}
+where $\pLvl_{t+1}$ is `permanent labor income,' which always grows by a factor $\WGroFac$:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \pLvl_{t+1}/\pLvl_{t} & =  {\WGroFac}.
+\end{aligned}\end{gathered}\end{equation}
+
+\section{The Solution}
+
+It will be convenient to think of both market resources $\mLvl_{t}$ and permanent noncapital (labor) income $\pLvl_{t}$ 
+as state variables in this problem.
+Bellman's equation is 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \vFunc_{t}(\mLvl_{t},\pLvl_{t}) & =  \max_{\cLvl_{t}} \left\{ \uFunc(\cLvl_{t}) + \DiscFac \vFunc_{t+1}\left(\overbrace{(\mLvl_{t}-\cLvl_{t})\Rfree+\pLvl_{t+1}}^{=\mLvl_{t+1}},\pLvl_{t+1}\right)\right\}.
+        \label{eq:vmax}
+\end{aligned}\end{gathered}\end{equation}
+
+The first order condition for this maximization is
+\begin{equation}\begin{gathered}\begin{aligned}
+        \uFunc^{\prime}(\cLvl_{t}) & =  \DiscFac \left(\Rfree \vFunc_{t+1}^{\mLvl}(\mLvl_{t+1},\pLvl_{t+1})-\overbrace{\frac{d\pLvl_{t+1}}{d \cLvl_{t}}}^{=0}\vFunc_{t+1}^{\pLvl}(\mLvl_{t+1},\pLvl_{t+1})\right), \label{eq:upeqrbv}
+\end{aligned}\end{gathered}\end{equation}
+and the \handoutC{Envelope} theorem tells us that
+\begin{equation}\begin{gathered}\begin{aligned}
+        \vFunc_{t}^{\mLvl}(\mLvl_{t},\pLvl_{t}) & =  \Rfree \DiscFac \vFunc_{t+1}^{\mLvl}(\mLvl_{t+1},\pLvl_{t+1}). \label{eq:vpeqrbv}
+\end{aligned}\end{gathered}\end{equation}
+
+But the right hand sides of \eqref{eq:upeqrbv} and \eqref{eq:vpeqrbv} 
+are identical, so
+\begin{equation}\begin{gathered}\begin{aligned}
+        \vFunc_{t}^{\mLvl}(\mLvl_{t},\pLvl_{t}) & =  \uFunc^{\prime}(\cLvl_{t})
+\end{aligned}\end{gathered}\end{equation}
+and similar logic tells us that $\vFunc_{t+1}^{\mLvl}(\mLvl_{t+1},\pLvl_{t+1})=\uFunc^{\prime}(\cLvl_{t+1}),$ which 
+(substituting $\uFunc^{\prime}$ for $\vFunc^{\mLvl}$ in \eqref{eq:vpeqrbv}) gives us the \hypertarget{EulerCGroFac}{Euler 
+equation for consumption}:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \uFunc^{\prime}(\cLvl_{t}) & =  \Rfree\DiscFac \uFunc^{\prime}(\cLvl_{t+1}) \\
+        1 & =  \Rfree\DiscFac \left(\frac{\cLvl_{t+1}}{\cLvl_{t}}\right)^{-\CRRA}
+\\  \left(\frac{\cLvl_{t+1}}{\cLvl_{t}}\right) & =  (\Rfree\DiscFac)^{1/\CRRA} \label{eq:cgrow}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Thus, consumption grows in every period by a factor $\APFac \equiv (\Rfree\DiscFac)^{1/\CRRA}$, where we use the Old English letter $\APFac$ to measure what we will call the ``absolute patience'' factor.
+Specifically, if 
+\begin{equation}\begin{gathered}\begin{aligned}
+     \APFac & <  1 \label{eq:AIC}
+\end{aligned}\end{gathered}\end{equation}
+we will say that the consumer exhibits `absolute impatience' because this is the condition that guarantees that the level of consumption will be falling (and what better definition of absolute impatience could there be than deliberately spending so much that you will have to cut your spending in the future?).
+If $\APFac > 1$ the consumer exhibits ``absolute patience'' (the consumer wants to defer resources into the future in order to achieve consumption growth).
+
+
+The Intertemporal Budget Constraint tells us that the present discounted 
+value of consumption must match the PDV of total resources:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \PDV_{t}^{T}(\cLvl) & =  \bLvl_{t}+\PDV_{t}^{T}(\pLvl).
+        \label{eq:ibc}
+\end{aligned}\end{gathered}\end{equation}
+
+Fact \FinSum~from \MathFactsList~can be used to show that the PDV of labor income (also called `human wealth'
+$\hLvl_{t}$) is
+\begin{equation}\begin{gathered}\begin{aligned}
+        \hLvl_{t} = \PDV_{t}^{T}(\pLvl) & =  \sum_{n=0}^{T-t} \Rfree^{-n}\pLvl_{t+n}
+\\       & =  \pLvl_{t}\sum_{n=0}^{T-t} \Rfree^{-n}{\WGroFac}^{n} = \pLvl_{t}\sum_{n=0}^{T-t} ({\WGroFac}/\Rfree)^{n}
+\\   & =  \pLvl_{t}\left(\frac{1-({\WGroFac}/\Rfree)^{T-t+1}}{1-({\WGroFac}/\Rfree)}\right)    \label{eq:yfin}
+\end{aligned}\end{gathered}\end{equation}
+while the PDV of consumption is
+\begin{equation}\begin{gathered}\begin{aligned}
+        \PDV_{t}^{T}(\cLvl) & =  \sum_{n=0}^{T-t} \Rfree^{-n}\cLvl_{t+n}
+\\       & =  \sum_{n=0}^{T-t} \Rfree^{-n}\cLvl_{t}((\Rfree\DiscFac)^{1/\CRRA})^{n}
+\\       & =  \cLvl_{t} \sum_{n=0}^{T-t} [\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}]^{n}
+\\   & =  \cLvl_{t}\left(\frac{1-[\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}]^{T-t+1}}{1-[\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}]}\right) \label{eq:cfin}.
+\end{aligned}\end{gathered}\end{equation}
+
+\hypertarget{cFuncAnalytical}{}
+We can solve the model by combining \eqref{eq:cfin} and \eqref{eq:yfin} using 
+\eqref{eq:ibc} to obtain:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & =  \underbrace{\left(\frac{1-[\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}]}{1-[\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}]^{T-t+1}}\right)}_{\equiv \MPC_{t}} \underbrace{\left[\bLvl_{t}+\pLvl_{t}\overbrace{\left(\frac{1-({\WGroFac}/\Rfree)^{T-t+1}}{1-({\WGroFac}/\Rfree)}\right)}^{\equiv \hNrm_{t}}\right]}_{\equiv \oLvl_{t}} \label{eq:cfinhoriz}.
+\end{aligned}\end{gathered}\end{equation}
+where $\MPC_{t}$ is the marginal propensity to consume (MPC) out of \textbf{o}verall (human plus nonhuman) wealth $\oLvl_{t}$.
+
+In order to apply \InfSum~to move to the infinite-horizon case ($T=\infty$), we need to impose the condition
+\begin{equation}\begin{gathered}\begin{aligned}
+        {\WGroFac}/\Rfree & <  1
+\\  {\WGroFac}   & <  \Rfree.  \label{eq:FHWCPF}
+\end{aligned}\end{gathered}\end{equation}
+Why?
+Because if income were expected to grow at a rate
+greater than the interest rate forever, then the PDV of future income
+would be infinite; with infinite human wealth, the problem has no
+well-defined solution.
+We henceforth call \eqref{eq:FHWCPF} the
+Finite Human Wealth Condition (FHWC).
+
+Similarly, if consumption starts at a positive level and grows by the factor $\APFac=(\Rfree \DiscFac)^{1/\CRRA}$, in order for the PDV of consumption to be finite we must impose:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \underbrace{\left(\frac{(\Rfree\DiscFac)^{1/\CRRA}}{\Rfree}\right)}_{\RPFac} & < 1  \label{eq:PatR}
+\end{aligned}\end{gathered}\end{equation}
+and we will henceforth call $\RPFac$ the `return patience factor'
+whose log is the `return patience rate' $\RPRte \equiv \log \RPFac$ ($\APRte$ is the lower-case version of $\APFac$) and
+what \eqref{eq:PatR} says is that the desired growth rate of
+consumption must be less than the interest rate in order for the model
+to have a well-defined solution.
+This condition therefore
+imposes a requirement that `impatience' be greater than some minimum amount.
+
+(For (much) more on the various definitions of impatience used in this handout, their implications, and parallel conditions for models with uncertainty, see \cite{BufferStockTheory}).
+
+If both the RIC and the FHWC hold, then the model has a well-defined 
+infinite horizon solution,\footnote{See \cite{BufferStockTheory} for a discussion of the case where the conditions do not hold.} as can be seen by realizing that 
+\begin{equation}\begin{gathered}\begin{aligned}
+   \lim_{T \rightarrow \infty} ({\WGroFac}/\Rfree)^{T-t+1} & =  0
+\\ \lim_{T \rightarrow \infty} (\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA})^{T-t+1} & = 0
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Substituting these zeros into \eqref{eq:cfinhoriz} yields 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & =  \left(1-\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}\right)\left[\bLvl_{t}+\left(\frac{\pLvl_{t}}{1-({\WGroFac}/\Rfree)}\right)\right] %\label{eq:cinfhor}
+\\      & =  \left(1-\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}\right)\left(\mLvl_{t}-\pLvl_{t}+\hLvl_{t}\right)  %\label{eq:cmpk}
+\\      & =  \underbrace{\left(\frac{\Rfree -(\Rfree\DiscFac)^{1/\CRRA}}{\Rfree}\right)}_{ \equiv \MPC} \oLvl_{t} \label{eq:cOfw}
+\end{aligned}\end{gathered}\end{equation}
+where $\oLvl_{t}$ is the consumer's `\textbf{o}verall' or `total wealth,' the sum of human and 
+nonhuman wealth, and $\MPC$ is the infinite-horizon marginal propensity to consume.
+
+Now consider the question `What is the level of $\cLvl_{t}$ that will 
+leave total wealth intact, allowing the same value of consumption in 
+period $t+1$ and forever after (that is, allowing $\cLvl_{t+n}=\cLvl_{t}~\forall~n>0$)?'  
+
+The intuitive answer is that the wealth-preserving level of spending is exactly equal to the
+(properly conceived) interest earnings on one's total
+wealth.
+We call this the `sustainable' level of consumption.
+
+
+Because human wealth is exactly like any other kind of wealth in this 
+perfect foresight framework, it is possible to work directly with the level of total 
+wealth $\oLvl$ to find the sustainable level of spending.
+Suppose we assume the consumer will spend fraction 
+$\varkappa$ of total wealth in each period; the 
+$\varkappa$ that leaves wealth intact will be given by $\varkappa$ in
+\begin{equation*}\begin{gathered}\begin{aligned}
+        \oLvl_{t+1} & =  (\oLvl_{t}-\cLvl_{t})\Rfree
+\\  \bar\oLvl & =  (\bar\oLvl-\varkappa \bar\oLvl)\Rfree
+\\      1 & =  (1-\varkappa)  \Rfree
+\\      1/\Rfree & =  (1-\varkappa)
+\\  \varkappa & =  1-1/\Rfree
+\\  & =  \left(\frac{\Rfree -1}{\Rfree}\right)
+\\  & =  \rfree/\Rfree \label{eq:PIHMPC}
+.
+\end{aligned}\end{gathered}\end{equation*}
+Thus, the consumer can spend only the interest earnings $\rfree$ on 
+wealth, divided by the return factor $\Rfree$.
+(The division occurs because 
+the requirement is to be able to spend the same amount \textit{next} period,
+so you need to account for the time cost of today's spending by dividing by $\Rfree$ which
+connects today's spending to tomorrow's wealth.)
+Note that the coefficient multiplying total wealth in \eqref{eq:cOfw}
+is also divided by $\Rfree$.
+Thus, whether the consumer is spending
+more than the sustainable amount, exactly the sustainable amount, or
+less than the sustainable amount depends upon whether the numerator in
+\eqref{eq:cOfw} is greater than, equal to, or less than $\rfree$.
+As noted before,
+the consumer will be `absolutely impatient' if 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \Rfree-(\Rfree\DiscFac)^{1/\CRRA} & >  \rfree  \\
+        1-(\Rfree\DiscFac)^{1/\CRRA} & >  0  \notag \\
+        1 & >  (\Rfree\DiscFac)^{1/\CRRA}. \notag
+\end{aligned}\end{gathered}\end{equation}
+
+Finally, if $\Rfree\DiscFac=1$ (which is to say, the interest rate
+exactly offsets the time preference rate), then $(\Rfree\DiscFac)^{1/\CRRA}=1$ regardless of the value of
+$\CRRA$ so that the consumer is `poised' on the knife-edge between
+patience and impatience.
+We refer to
+such a consumer as `absolutely poised.'
+Similarly, we say that a consumer for
+whom $\RPFac=1$ is `return poised.'\footnote{`Return impatience' guarantees a positive marginal propensity to consume; absolute
+impatience guarantees a falling level of consumption.
+If $\rfree > 0$, return impatience
+will hold even if the consumer is `poised' with respect to absolute patience.}
+
+
+
+% The consumer will be impatient, spending more than his income, if $\Rfree\DiscFac<1$, and patient, spending less than his income, if $\Rfree\DiscFac>1$.
+
+Equation \eqref{eq:cOfw} can be simplified into something a bit 
+easier to handle by making some approximations.
+If $\DiscFac = 
+1/(1+\discRte)$, then we can use facts from \handoutM{MathFacts} to discover that
+\begin{equation*}\begin{gathered}\begin{aligned}
+      \log (\Rfree\DiscFac)^{1/\CRRA}/\Rfree & =  (1/\CRRA) (\log \Rfree + \log [1/(1+\discRte) ]) - \log \Rfree  \\
+     & =  (1/\CRRA) (\log(1+r) + \log 1 - \log (1+\discRte) ) - \log \Rfree  \\
+         & \approx  \CRRA^{-1}(\rfree -\discRte)  - \rfree 
+\\      (\Rfree\DiscFac)^{1/\CRRA}/\Rfree & \approx  1+(\CRRA^{-1}(\rfree-\discRte)-\rfree)
+.
+\end{aligned}\end{gathered}\end{equation*}
+
+Substituting this into \eqref{eq:cOfw} gives
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & \approx  \left(\rfree-\CRRA^{-1}(\rfree-\discRte)\right)\oLvl_{t} \label{eq:capprox}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+From this we can see again that whether the consumer is return patient, return poised, or return impatient
+depends on the relationship between $\rfree$ and $\discRte$.
+Note also that 
+if $\CRRA = \infty$ then the consumer is infinitely averse to changing 
+the level of consumption, and so once again the consumer spends 
+exactly the sustainable amount.
+(This consumer is `absolutely poised' but `return impatient').
+
+
+Now a  brief digression on what `income' means in this model.
+Suppose
+for simplicity that the consumer had no capital assets (`bank balances' $\bLvl_{t}=0$), and suppose
+that income was expected to stay constant at level $\pLvl_{t+n}=\pLvl~\forall~n>0$ forever.
+In this case human wealth would be:
+\begin{equation*}
+  \begin{gathered}
+    \begin{aligned}
+        \hLvl_{t} & = \pLvl+\pLvl/\Rfree+\pLvl/\Rfree^{2}+\ldots  \\
+         & = \pLvl(1+1/\Rfree+1/\Rfree^{2}+\ldots)  \\
+         & = \pLvl\left(\frac{1}{1-1/\Rfree}\right)
+\\   & = \pLvl\left(\frac{\Rfree}{\Rfree -1}\right)
+\\   & = \pLvl\left(\frac{\Rfree}{\rfree}\right)
+.
+\end{aligned}
+\end{gathered}
+\end{equation*}
+
+
+We found in equation \eqref{eq:PIHMPC} that 
+the level of consumption that leaves `wealth' $\oLvl_{t}$ intact
+was
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & =  \left(\frac{\rfree}{\Rfree}\right) \oLvl_{t}  \\
+         & =  \left(\frac{\rfree}{\Rfree}\right) (\underbrace{\bLvl_{t}}_{=0}+\hLvl_{t}) \\
+                        & =  \left(\frac{\rfree}{\Rfree}\right)     \pLvl \left(\frac{\Rfree}{\rfree}\right)\\
+                        & =  \pLvl.
+\end{aligned}\end{gathered}\end{equation}
+
+So in this case, spending the `interest income on human wealth' 
+corresponds to spending exactly your labor income.
+This seems less 
+mysterious if you think of income $\pLvl_{t}$ as the `return' on your 
+human capital, which is an asset whose value is $\hLvl_{t}$.
+If you `capitalize' your stream of 
+income using the interest factor $\Rfree$ and then spend the interest income on the 
+capitalized stream, it stands to reason that you are spending the flow 
+of income from that source.
+
+With constant $\pLvl$ we can rewrite \eqref{eq:capprox} as
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & \approx  \left(\rfree-\CRRA^{-1}(\rfree-\discRte)\right)\left(\bLvl_{t}+ \pLvl\left(\frac{\Rfree}{\rfree}\right)\right).
+\end{aligned}\end{gathered}\end{equation}
+
+$\rfree$ appears three times in this equation, which correspond (in
+order) to the income effect, the substitution effect, and the human
+wealth effect.
+To see this, note that an increase in the first
+$\rfree$ reflects an increase in the payout rate on total wealth (set
+$\pLvl = 0$ and refer to our formula above for $\varkappa$, realizing
+that for small $\rfree$, $\rfree/\Rfree \approx \rfree$.)
+That is, it
+simply reflects the consequence for consumption of an increase in interest
+income -- so it captures the `income effect' of interest rates.
+The second term
+corresponds to the subsitution effect, as can be seen from its
+dependence on the intertemporal elasticity of substitution
+$\CRRA^{-1}$.
+Finally, the $\pLvl(\Rfree/\rfree)$ term clearly
+corresponds to human wealth, and therefore the sensitivity of
+consumption to $\rfree$ coming through this term corresponds to the
+human wealth \textit{effect}.
+
+\section{Normalizing By $\pLvl$}
+
+The whole problem can be restated more simply by `dividing through' by the level of
+permanent income before solving.
+Hereafter, nonbold variables will be
+the normalized bold-letter equivalent, e.g.\
+$\cNrm_{t}=\cLvl_{t}/\pLvl_{t}$, and note that if
+$\pLvl_{t+1}={\WGroFac} \pLvl_{t}~\forall~t$ then from the standpoint
+of date $t$,
+\begin{equation}\begin{gathered}\begin{aligned}
+        \uFunc(\cLvl_{t+n}) & =  \frac{\cLvl_{t+n}^{1-\CRRA}}{1-\CRRA}  \\
+         & =  \frac{(\cNrm_{t+n}\pLvl_{t+n})^{1-\CRRA}}{1-\CRRA}  \\
+         & =  (\pLvl_{t}{\WGroFac}^{n})^{1-\CRRA}\frac{\cNrm_{t+n}^{1-\CRRA}}{1-\CRRA}
+\end{aligned}\end{gathered}\end{equation}
+which means that 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \sum_{n=0}^{T-t} \DiscFac^{n}\frac{\cLvl_{t+n}^{1-\CRRA}}{1-\CRRA} & =  \pLvl_{t}^{1-\CRRA}\sum_{n=0}^{T-t} ({\WGroFac}^{1-\CRRA}\DiscFac)^{n} \frac{\cNrm_{t+n}^{1-\CRRA}}{1-\CRRA}  \label{eq:maxc2}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Furthermore, the accumulation equations can be rewritten by dividing
+both sides by $\pLvl_{t+1}$:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \bLvl_{t+1}/\pLvl_{t+1} & =  \frac{(\mLvl_{t}-\cLvl_{t})\Rfree}{\pLvl_{t+1}}  \\
+        \bNrm_{t+1} & =   \left(\frac{(\mLvl_{t}-\cLvl_{t})\Rfree}{\pLvl_{t}}\right)\left(\frac{\pLvl_{t}}{\pLvl_{t+1}}\right) \\
+         & =  (\mNrm_{t}-\cNrm_{t})(\Rfree/{\WGroFac})
+\end{aligned}\end{gathered}\end{equation}
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mLvl_{t+1} & =  \bLvl_{t+1}+\pLvl_{t+1}
+\\      \mNrm_{t+1} & =  \bNrm_{t+1}+1.
+\end{aligned}\end{gathered}\end{equation}
+
+Now if we define $\DiscAlt \equiv {\WGroFac}^{1-\CRRA}\DiscFac$ and $\RNrmByG \equiv \Rfree/{\WGroFac}$,
+the original problem can be rewritten as:
+\begin{equation}
+\max~~\pLvl_{t}^{1-\CRRA}\sum_{n=0}^{T-t} \DiscAlt^{n} \uFunc(\cNrm_{t+n})             \label{eq:scaledmaxprob}
+\end{equation}
+subject to the constraints
+\begin{equation}\begin{gathered}\begin{aligned}
+   \aNrm_{t}   & =  \mNrm_{t}-\cNrm_{t}
+\\ \bNrm_{t+1} & =  \aNrm_{t}\RNrmByG
+\\ \mNrm_{t+1} & =  \bNrm_{t+1}+1
+\end{aligned}\end{gathered}\end{equation}
+and we can go through the same steps as above to find that the solution
+is
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cNrm_{t} & =  (1-\RNrmByG^{-1}(\RNrmByG\DiscAlt)^{1/\CRRA})\left[\mNrm_{t}-1+\overbrace{\left(\frac{1}{1-{1}/\RNrmByG}\right)}^{\equiv\hNrm}\right] \label{eq:normC}
+\end{aligned}\end{gathered}\end{equation}
+subject to the `finite human wealth' condition
+\begin{equation}\begin{gathered}\begin{aligned}
+        {1} & <  \RNrmByG
+\\  1 & <  \Rfree/\WGroFac
+\end{aligned}\end{gathered}\end{equation}
+which is the same condition \eqref{eq:FHWCPF} as above, and also subject to the `return impatience condition'
+\begin{equation}\begin{gathered}\begin{aligned}
+                (\RNrmByG\DiscAlt)^{1/\CRRA} & <  \RNrmByG  
+\\              \left(\frac{\Rfree}{{\WGroFac}}\DiscFac {\WGroFac}^{1-\CRRA}\right)^{1/\CRRA} & <  \Rfree/{\WGroFac}  
+\\              (\Rfree\DiscFac)^{1/\CRRA} & <  \Rfree  
+\end{aligned}\end{gathered}\end{equation}  
+which is also the same as above in \eqref{eq:PatR}.
+
+Now note that \eqref{eq:normC} can be rewritten
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cNrm_{t} & =  \left(\frac{\RNrmByG-(\RNrmByG\DiscAlt)^{1/\CRRA}}{\RNrmByG}\right)\oNrm_{t}
+\\ & =  \underbrace{(1 - \RPFac)}_{\equiv \MPC} \oNrm_{t}
+\end{aligned}\end{gathered}\end{equation}
+where $\oNrm_{t}$ is the consumer's total wealth-to-permanent-labor-income 
+ratio, and $\MPC$ is the `marginal propensity to consume' out of wealth.
+
+As before, whether $\oNrm$ is rising or falling depends upon the 
+relationship between $\RNrmByG-1$ and 
+$\RNrmByG-(\RNrmByG\DiscAlt)^{1/\CRRA}$.
+A consumer will be 
+drawing down his wealth-to-income ratio if
+\begin{equation}\begin{gathered}\begin{aligned}
+        \RNrmByG-(\RNrmByG\DiscAlt)^{1/\CRRA} & >  \RNrmByG-1  \\
+        1-(\RNrmByG\DiscAlt)^{1/\CRRA} & >  0  \\
+        1 & >  (\RNrmByG\DiscAlt)^{1/\CRRA}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Now substituting the definitions of $\RNrmByG$ and $\DiscAlt$
+we see that whether $\oNrm$ is rising or falling depends on whether
+\begin{equation}\begin{gathered}\begin{aligned}
+        1 & >  (\frac{\Rfree}{{\WGroFac}}\DiscFac {\WGroFac}^{1-\CRRA})^{1/\CRRA}
+\\  1 & >  (\Rfree\DiscFac {\WGroFac}^{-\CRRA})^{1/\CRRA}
+\\  1 & >  \underbrace{\left(\frac{(\Rfree\DiscFac)^{1/\CRRA}}{\WGroFac}\right)}_{\GPFac} \label{eq:PatWGroCond}
+,
+\end{aligned}\end{gathered}\end{equation}
+where $\GPFac$ is the `growth patience factor.'
+We call \eqref{eq:PatWGroCond} the `growth impatience condition' (GIC),\footnote{Or, GIC-PF if we want to highlight that this is the condition for the perfect foresight model.} and we say that the consumer is
+`growth impatient' if \eqref{eq:PatWGroCond} holds.
+
+Thus, whether the consumer is patient or impatient in the sense of
+building up or drawing down a wealth-to-income \textit{ratio} depends on
+whether the growth rate of labor income is less than, equal to, or
+greater than the growth rate of consumption.
+Analogously to our
+earlier usages, a consumer for whom $\GPFac=1$ (equivalently, $\GPRte= 0$) would be `growth poised.'
+
+To get the intuition for this, consider the case of a consumer with no
+nonhuman wealth, $\bNrm_{t}=0$.
+This consumer's absolute level of
+consumption will grow at $(\Rfree\DiscFac)^{1/\CRRA}$ and absolute
+level of income grows at ${\WGroFac}$, but the PDV of future consumption
+and future income must be equal.
+If income is growing faster
+than consumption but has the same PDV, consumption must be \textit{starting
+out} at a level \textit{higher} than income - which is the sense in 
+which this consumer is impatient (spending more than his income).
+`Growth impatience' is
+therefore the condition that causes consumers with no assets to want to borrow.
+
+\section{Applications}
+
+\subsection{How Large is the Human Wealth Effect?} \label{subsec:HWEffect}
+
+We can now apply the model to answer our first useful question: How large does the model 
+imply the `human wealth effect' is?
+
+
+For simplicity, assume that $\bNrm_{t} = 0$.
+Then the original
+version of the approximate formula \eqref{eq:capprox} tells us that the
+\textit{level} of consumption will be given by:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & \approx  \left(\rfree - \CRRA^{-1}(\rfree-\discRte)\right)\left(\frac{\pLvl_{t}}{1-{\WGroFac}/\Rfree}\right)  \\
+         & \approx  \left(\rfree - \CRRA^{-1}(\rfree-\discRte)\right)\left(\frac{\pLvl_{t}}{\rfree-\WGroRte}\right). \label{eq:cofw2}
+\end{aligned}\end{gathered}\end{equation}
+
+We are interested only in calibrations of the model in which the consumer is `growth impatient' so that $\WGroRte > \CRRA^{-1}(\rfree-\DiscFac)$ so if we define the rate of growth impatience as 
+\begin{equation}\begin{gathered}\begin{aligned} \label{eq:patwGro}
+\GPRte & \equiv  \CRRA^{-1}(\rfree-\DiscFac)-\WGroRte 
+\end{aligned}\end{gathered}\end{equation}
+we can write this as 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & \approx  \pLvl_{t} \left(\frac{\rfree - (\WGroRte+\GPRte)}{\rfree-\WGroRte}\right)
+\\ & =  \pLvl_{t} \left(1 - \GPRte/(\rfree - \WGroRte)\right). \label{eq:CvsP}
+\end{aligned}\end{gathered}\end{equation}
+
+Remembering that imposition of the growth impatience condition is equivalent to assuming $\GPRte < 0$, while the FHWC requires $\rfree > \WGroRte$, it is clear that the expression $-\GPRte/(\rfree-\WGroRte)$ will be positive:  The consumer will spend more than his permanent labor income.
+
+Now suppose we choose plausible values for $(\rfree, \discRte, \WGroRte, \CRRA) = (0.04,0.04,0.02,2)$.
+Then \eqref{eq:cofw2} becomes:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & \approx  0.04 (\pLvl_{t}/0.02) \\
+         & =  2 \pLvl_{t}.
+\end{aligned}\end{gathered}\end{equation}
+
+Now suppose the interest rate changes to $\rfree=0.03$, while all other parameters
+remain the same.
+Then \eqref{eq:cofw2} becomes:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \cLvl_{t} & \approx  0.035 (\pLvl_{t}/0.01)  \\
+         & =  3.5 \pLvl_{t}.
+\end{aligned}\end{gathered}\end{equation}
+
+The point of this example is that for plausible parameter values, the
+human wealth effect is enormously stronger than the income and
+substitution effects, so that we should see large drops in consumption
+when interest rates rise and conversely strong gains when interest
+rates fall.
+This is a summary of the main point of the famous paper
+by \cite{summersCapTax}; Summers derives formulas for an economy with
+overlapping generations of finite-lifetime consumers, but those
+complications do not change the basic message.
+
+\subsection{How Does the Saving Rate Respond to Interest Rates?} % See also the answer key to PerfForesightCRRA-And-Great-Recession
+
+The level of saving can be defined as total income minus total consumption:
+\begin{equation}\begin{gathered}\begin{aligned}
+  \sLvl_{t} & \approx  \rfree \aLvl_{t-1} + \pLvl_{t} - \cLvl_{t}
+\end{aligned}\end{gathered}\end{equation}
+but since 
+\begin{equation}\begin{gathered}\begin{aligned}
+  \label{eq:cFromHandB}
+  \cLvl_{t} & \approx  \overbrace{\pLvl_{t} \left(1 - \GPRte/(\rfree - \WGroRte)\right)}^{\text{from }\eqref{eq:CvsP}}+\overbrace{(\rfree-\CRRA^{-1}(\rfree-\DiscFac))\bLvl_{t}}^{\text{from }\eqref{eq:capprox}}
+\end{aligned}\end{gathered}\end{equation}
+this can be rewritten as
+\begin{equation}\begin{gathered}\begin{aligned}
+ \sLvl_{t} & \approx  \rfree \aLvl_{t-1} + \pLvl_{t}- \pLvl_{t} \left(1 - \GPRte/(\rfree - \WGroRte)\right) - (\rfree-\CRRA^{-1}(\rfree-\DiscFac))\Rfree \aLvl_{t-1}
+\\ & =  \rfree \aLvl_{t-1} + \pLvl_{t} \GPRte/(\rfree - \WGroRte)- (\rfree-\CRRA^{-1}(\rfree-\DiscFac))\Rfree\aLvl_{t-1}
+\\ \sNrm_{t} & \approx  \rfree \aNrm_{t-1} + \GPRte/(\rfree - \WGroRte)- (\rfree-\CRRA^{-1}(\rfree-\DiscFac))\Rfree \aNrm_{t-1}
+\\ & \approx  \GPRte/(\rfree - \WGroRte)+ \CRRA^{-1}(\rfree-\DiscFac)\aNrm_{t-1}
+\end{aligned}\end{gathered}\end{equation}
+(where the last approximations come from the assumptions that $1/\WGroFac \approx 1$) and that $\rfree \times (\rfree-\CRRA^{-1}(\rfree-\DiscFac))$ is `small.'
+The saving \textit{rate} (for which we use the letter $\varsigma$ to distinguish it from $\sNrm$ above) is the ratio of saving to \textit{total} income (not just labor income):
+\begin{equation}\begin{gathered}\begin{aligned}
+\varsigma_{t} & =  \left(\frac{\GPRte/(\rfree - \WGroRte)+ \CRRA^{-1}(\rfree-\DiscFac)\aNrm_{t-1}}{1+ \rfree \aNrm_{t-1}}\right).
+\end{aligned}\end{gathered}\end{equation}
+
+The first thing to notice about this expression is that as $\aNrm_{t-1}$ approaches infinity, the saving rate asymptotes to 
+\begin{equation}\begin{gathered}\begin{aligned}
+\varsigma_{t} & \approx  \left(\frac{\CRRA^{-1}(\rfree-\DiscFac)}{\rfree}\right)
+\end{aligned}\end{gathered}\end{equation}
+and whether the saving rate is positive or negative depends on whether the consumer is absolutely impatient, absolutely poised, or absolutely patient.\footnote{In this partial equilibrium framework, we are assuming that the consumer's wealth can go to infinity without any effect on the aggregate interest rate.}
+
+Finally, if we rewrite this as 
+\begin{equation}\begin{gathered}\begin{aligned}
+\varsigma & \approx  \CRRA^{-1} (1 - \discRte \rfree^{-1})
+\end{aligned}\end{gathered}\end{equation}
+then it is apparent that the response of the saving rate to the interest rate is 
+\begin{equation}\begin{gathered}\begin{aligned}
+  \label{eq:dsdr}
+  \left(\frac{d \varsigma}{d \rfree}\right) & =  \CRRA^{-1}\discRte \rfree^{-2}.
+\end{aligned}\end{gathered}\end{equation}
+
+If we consider almost any plausible configuration of parameter values, say $\rfree = \discRte=0.05$ and $\CRRA = 2$, this translates to a very large response of the saving rate with respect to $\rfree$ (in the case of the parameter values mentioned above, $(1/2)(20)=10$).
+
+
+\pagebreak\appendix
+\centerline\textbf{\LARGE Appendix}\medskip
+
+\setcounter{section}{0}
+
+\section{The Limiting Solution to the Perfect Foresight Model if the FHWC Fails}\label{sec:PFwhenFHWfails}
+
+\subsection{When the RIC Holds}
+Consider first a circumstance in which the RIC holds ($\RPFac<1$).
+In this case, the perfect foresight unconstrained model does not have a sensible solution because human wealth is infinite while the model implies that the optimal policy is to consume a positive proportion of human wealth.
+$\cFunc(\mNrm)=\infty~\forall~\mNrm$ is not a useful (or plausible!) solution.
+
+\subsection{When the RIC Fails}
+The alternative case is when the RIC fails ($\RPFac=1$).
+Here, the only way to make sense of the model is to think about the limit of the finite horizon model as the horizon extends to infinity.
+This is because behavior reflects a competition between two pathologies that characterize the infinite horizon solution:  It exhibits a limiting MPC of zero out of total wealth, which includes human wealth -- which approaches infinity.
+A limiting solution of $\cFunc(\mNrm) = 0 \times \infty$ is even less useful than $\cFunc(\mNrm) = \infty$!
+
+
+It turns out that the limiting solution is not ambiguous, however.
+The finite horizon solution implies that consumption out of human wealth when the end of life is $n$ periods in the future is 
+\begin{equation}\begin{gathered}\begin{aligned}
+  \MPC_{n} \hNrm_{n} & =  \left(\frac{(\Rfree^{-1}{\WGroFac})^{{n}+1}-1}{[\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}]^{{n}+1}-1}\right) 
+\end{aligned}\end{gathered}\end{equation}
+whose limit is given by 
+\begin{equation}\begin{gathered}\begin{aligned}
+\lim_{{n} \uparrow \infty} \MPC_{n} \hNrm_{n} & =  \lim_{n \uparrow \infty} \left(\frac{(\Rfree^{-1}{\WGroFac})^{{n}+1}}{[\Rfree^{-1}(\Rfree\DiscFac)^{1/\CRRA}]^{{n}+1}}\right)
+\\ & =  \lim_{n \uparrow \infty} \left(\frac{1}{\GPFac^{(n+1)}}\right)
+\\ & =  \infty
+\end{aligned}\end{gathered}\end{equation}
+since the if the FHWC condition fails ($\WGroFac > \Rfree$) then if the RIC $\APFac/\Rfree < 1$ holds, the GIC $\APFac < \WGroFac$ must hold, which guarantees $\GPFac < 1$ so that $\GPFac^{n+1}$ approaches zero as $n \uparrow \infty.$
+
+\hypertarget{Useful-Analytical-Results}{}
+\section{Useful Analytical Results}
+
+Given the result from  \eqref{eq:cgrow} that
+\begin{equation}\begin{gathered}\begin{aligned}
+  c_{t+n} & =  \APFac^{n} c_{t} \notag
+\end{aligned}\end{gathered}\end{equation}
+we can rewrite the value function as
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} & =  \uFunc(c_{t}) + \DiscFac \uFunc(c_{t}\APFac) + \DiscFac^{2} \uFunc(c_{t} \APFac^{2}) + ...
+  \\ & =  (1-\CRRA)^{-1}\left(c_{t}^{1-\CRRA} + \DiscFac (c_{t}\APFac)^{1-\CRRA} + \DiscFac^{2} (c_{t} \APFac^{2})^{1-\CRRA} + ...\right)\notag 
+  \\ & =  (1-\CRRA)^{-1}\left(c_{t}^{1-\CRRA}(1+\DiscFac \APFac^{1-\CRRA} + \left(\DiscFac \APFac^{1-\CRRA})^{2} + ... \right) \right)\notag 
+\\ & =  \uFunc(c_{t})\left(1+\DiscFac \APFac^{1-\CRRA} + (\DiscFac \APFac^{1-\CRRA})^{2} + ... \right)\notag 
+\end{aligned}\end{gathered}\end{equation}
+but since $\DiscFac \APFac^{1-\CRRA} = \RPFac$,\footnote{
+\begin{equation}\begin{gathered}\begin{aligned}
+  \DiscFac \APFac^{1-\CRRA} & =  \DiscFac (\Rfree \DiscFac)^{\frac{1-\CRRA}{\CRRA}}
+  \\ & =                               \DiscFac (\Rfree \DiscFac)^{1/\CRRA-1}
+  \\ & =             (\Rfree \DiscFac)^{1/\CRRA} / \Rfree
+           \\ & =  \RPFac
+\end{aligned}\end{gathered}\end{equation}}
+this reduces to  \hypertarget{vFuncAnalytical}{}
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} &=  \uFunc(c_{t})\overbrace{(1+\RPFac+\RPFac^{2}+...+\RPFac^{T-t})}^{\equiv \PDV_{t}(\cFunc)} \label{eq:vFuncAnalytical}
+\end{aligned}\end{gathered}\end{equation}
+where $\PDV_{t}(\cFunc)$ is the discounted value of future consumption growth (that is, the discounted value of the ratio of future consumption to today's consumption).
+
+
+\cite{BufferStockTheory} shows (\href{https://www.econ2.jhu.edu/people/ccarroll/papers/BufferStockTheory/#MPCnvrsIsCPDV}{in an appendix}) that $\PDV_{t}(\cFunc) = \MPC_{t}^{-1}$, which means that we can write value as
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} & =  \uFunc(c_{t})\MPC^{-1}_{t}
+  \\ & =  \left(\frac{(\oNrm_{t}\MPC_{t})^{1-\CRRA}}{1-\CRRA}\right)\MPC_{t}^{-1}
+\\ & =  \uFunc(\oNrm_{t})\MPC_{t}^{-\CRRA}           
+\end{aligned}\end{gathered}\end{equation}
+
+
+\bibliographystyle{econark}\bibliography{\texname}
+
+\end{document}
+
+If consumption is simply a function of overall wealth bank balances $\oNrm_{t}$, we can derive a convenient recursive formula for the inverse of the MPC: \hypertarget{MPCrecursive}{}
+\begin{equation}\begin{gathered}\begin{aligned}
+  \uFunc^{\prime}(\MPC_{t} \oNrm_{t}) & = \Rfree \DiscFac \uFunc^{\prime}(\MPC_{t+1}\overbrace{\oNrm_{t}(1-\MPC_{t})\Rfree}^{\oNrm_{t+1}}) \label{eq:MPCrecursive}
+\\ \MPC_{t} \oNrm_{t} & = (\Rfree \DiscFac)^{-1/\CRRA} \MPC_{t+1}\oNrm_{t}(1-\MPC_{t}) \Rfree\notag 
+\\ \underbrace{\Rfree^{-1} (\Rfree \DiscFac)^{1/\CRRA}}_{\RPFac} \MPC_{t}  & =  \MPC_{t+1}(1-\MPC_{t})\notag 
+\\ (\RPFac \MPC_{t})^{-1}  & =  \MPC_{t+1}^{-1}(1-\MPC_{t})^{-1}\notag 
+\\ (1-\MPC_{t}) \MPC_{t}^{-1}  & = \RPFac  \MPC_{t+1}^{-1}\notag 
+\\ \MPC_{t}^{-1}-1  & = \RPFac  \MPC_{t+1}^{-1}\notag 
+\\ \MPC_{t}^{-1}  & = 1+\RPFac  \MPC_{t+1}^{-1}\notag 
+\end{aligned}\end{gathered}\end{equation} 
+which implies that if the MPC in the last period $T$ is $\MPC_{T}=1$ then  from any date $t \leq T$ we can write
+\begin{equation}\begin{gathered}\begin{aligned}
+  \MPC_{t}^{-1} & =  1 + \RPFac + \RPFac^{2} + ... + \RPFac^{T-t} . \label{eq:MPCrecursiveSum}
+\end{aligned}\end{gathered}\end{equation}
+
+
+But the series on the RHS in \eqref{eq:vFuncAnalytical} and \eqref{eq:MPCrecursiveSum} are identical!
+So $\MPC^{-1}_{t} = \PDV_{t}(\cFunc)$, and we can equivalently write
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} &= \uFunc(c_{t})\MPC^{-1}_{t}.
+\end{aligned}\end{gathered}\end{equation}
+
+Now note that if we define a utility-inverse of the value function as $\vInv \equiv \left((1-\CRRA) \vFunc\right)^{1/(1-\CRRA)}$, then consumption exceeds its minimum possible value at $\underline{\mNrm}$ (where consumption exceeds $\cFunc(\underline{\mNrm})=0$) by $c_{t}=\MPC_{t}(\mNrm-\underline{m}):$
+\begin{equation}\begin{gathered}\begin{aligned}
+  \vInv_{t}(m) &= \MPC_{t}(\mNrm_{t}-\underline{m}_{t}) \MPC_{t}^{-1/(1-\CRRA)}
+  \\ & = (m - \underline{m})\MPC^{((1-\CRRA)/(1-\CRRA)-1/(1-\CRRA))}
+  \\ & = (m - \underline{m})\MPC^{-\CRRA/(1-\CRRA)}
+\end{aligned}\end{gathered}\end{equation}
+which is linear, and makes it very easy to compute
+\begin{equation}\begin{gathered}\begin{aligned}
+  \vFunc_{t}(\mNrm) &= \uFunc\left((m-\underline{m})\MPC_{t}^{-\CRRA/(1-\CRRA)}\right)
+%  \vFunc_{t}^{\prime}(\mNrm) &= \left(\cFunc_{t}(\mNrm)\right)^{-\CRRA}\MPC_{t} \PDV_{t}(\cFunc)
+\end{aligned}\end{gathered}\end{equation}
+                        
+\end{document}
+
+
+\begin{equation}\begin{gathered}\begin{aligned}
+  \texttt{vFuncNvrs}(\nabla m) & =   \MPC^{-\CRRA/(1-\CRRA)} (\nabla m) \\
+  \texttt{vFuncNvrs}(\nabla m) & =   \MPC^{-\CRRA/(1-\CRRA)+1/(1-\CRRA)-1/(1-\CRRA)} (\nabla m) \\
+  \texttt{vFuncNvrs}(\nabla m) & =   \MPC^{1-1/(1-\CRRA)} (\nabla m) \\
+  \uFunc(\texttt{vFuncNvrs}(\nabla m)) & = \frac{\left(\MPC^{1-1/(1-\CRRA)} (\nabla m)\right)^{1-\CRRA}}{1-\CRRA} \\
+  \uFunc(\texttt{vFuncNvrs}(\nabla m)) & = \MPC^{-1}\frac{\left(\MPC^{1-\CRRA} (\nabla m)^{1-\CRRA}}{1-\CRRA} \\
+  \uFunc(\texttt{vFuncNvrs}(\nabla m)) & = \MPC^{-1}\frac{\left(\MPC (\nabla m)\right)^{1-\CRRA}}{1-\CRRA} \\
+  \uFunc(\texttt{vFuncNvrs}(\nabla m)) & = \frac{\left(\MPC^{-\CRRA/(1-\CRRA)} (\nabla m)\right)^{1-\CRRA}}{1-\CRRA} \\
+  \\ & = \frac{\left(\MPC^{-\CRRA} (\nabla m)\right)^{1-\CRRA}}{1-\CRRA} \\
+  \\ & = \frac{\left(\MPC (\nabla m)\right)^{-\CRRA}(\nabla m)}{1-\CRRA} \\  
+  \\ & = c^{-\CRRA}(\nabla m)(1-\CRRA)^{-1} \\  
+\end{aligned}\end{gathered}\end{equation}
+
+
+

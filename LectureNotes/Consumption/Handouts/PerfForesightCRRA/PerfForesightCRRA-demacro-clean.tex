@@ -1,0 +1,641 @@
+\newcommand{\texname}{PerfForesightCRRA}
+\input{@resources/tex-add-search-paths}  % allow latex to find custom stuff
+\documentclass{scrartcl}
+\usepackage{econark-ark-required}\usepackage{econark-multibib,llorracc-handouts,graphicx,hyperref}\usepackage[authoryear]{natbib}
+% Lines containing CDCPrivate are excised when the public version of the document is created 
+
+\usepackage{wasysym}
+\usepackage[mathscr]{euscript}
+
+\begin{document}
+\handoutHeader
+
+{\centerline {\LARGE Consumption Under Perfect Foresight and CRRA Utility }}\vspace{0.15in}
+
+
+\section{The Problem}
+
+This handout solves the problem of a perfect foresight consumer with intertemporally separable CRRA utility
+$\mathrm{u}(\bullet)= \bullet^{1-\rho}/(1-\rho)$ who discounts future utility
+geometrically by a factor $\beta$ per period.  The finite horizon
+solution, whose last period is $T$, extends to the infinite horizon case if 
+intuitive `impatience' and `finite human wealth' conditions hold.
+
+The consumer's problem in period $t$ is to
+\begin{equation}
+\max \sum_{n=0}^{T-t} \beta^{n} \mathrm{u}(\boldsymbol{\mathit{c}}_{t+n})                \label{eq:maxprob}
+\end{equation}
+subject to the constraints 
+\begin{equation}\begin{gathered}\begin{aligned}
+      \boldsymbol{\mathit{a}}_{t}   & =  \boldsymbol{\mathit{m}}_{t}-\boldsymbol{\mathit{c}}_{t}
+\\    \boldsymbol{\mathit{b}}_{t+1} & =  \boldsymbol{\mathit{a}}_{t}\mathsf{R}
+\\    \boldsymbol{\mathit{m}}_{t+1} & =  \boldsymbol{\mathit{b}}_{t+1}+\boldsymbol{\mathit{p}}_{t+1}
+\end{aligned}\end{gathered}\end{equation}
+where $\boldsymbol{\mathit{p}}_{t+1}$ is `permanent labor income,' which always grows by a factor $\ensuremath{\mathrm{G}}$:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{p}}_{t+1}/\boldsymbol{\mathit{p}}_{t} & =  {\ensuremath{\mathrm{G}}}.
+\end{aligned}\end{gathered}\end{equation}
+
+\section{The Solution}
+
+It will be convenient to think of both market resources $\boldsymbol{\mathit{m}}_{t}$ and permanent noncapital (labor) income $\boldsymbol{\mathit{p}}_{t}$ 
+as state variables in this problem.
+Bellman's equation is 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathrm{v}_{t}(\boldsymbol{\mathit{m}}_{t},\boldsymbol{\mathit{p}}_{t}) & =  \max_{\boldsymbol{\mathit{c}}_{t}} \left\{ \mathrm{u}(\boldsymbol{\mathit{c}}_{t}) + \beta \mathrm{v}_{t+1}\left(\overbrace{(\boldsymbol{\mathit{m}}_{t}-\boldsymbol{\mathit{c}}_{t})\mathsf{R}+\boldsymbol{\mathit{p}}_{t+1}}^{=\boldsymbol{\mathit{m}}_{t+1}},\boldsymbol{\mathit{p}}_{t+1}\right)\right\}.
+        \label{eq:vmax}
+\end{aligned}\end{gathered}\end{equation}
+
+The first order condition for this maximization is
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathrm{u}^{\prime}(\boldsymbol{\mathit{c}}_{t}) & =  \beta \left(\mathsf{R} \mathrm{v}_{t+1}^{\boldsymbol{\mathit{m}}}(\boldsymbol{\mathit{m}}_{t+1},\boldsymbol{\mathit{p}}_{t+1})-\overbrace{\frac{d\boldsymbol{\mathit{p}}_{t+1}}{d \boldsymbol{\mathit{c}}_{t}}}^{=0}\mathrm{v}_{t+1}^{\boldsymbol{\mathit{p}}}(\boldsymbol{\mathit{m}}_{t+1},\boldsymbol{\mathit{p}}_{t+1})\right), \label{eq:upeqrbv}
+\end{aligned}\end{gathered}\end{equation}
+and the \handoutC{Envelope} theorem tells us that
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathrm{v}_{t}^{\boldsymbol{\mathit{m}}}(\boldsymbol{\mathit{m}}_{t},\boldsymbol{\mathit{p}}_{t}) & =  \mathsf{R} \beta \mathrm{v}_{t+1}^{\boldsymbol{\mathit{m}}}(\boldsymbol{\mathit{m}}_{t+1},\boldsymbol{\mathit{p}}_{t+1}). \label{eq:vpeqrbv}
+\end{aligned}\end{gathered}\end{equation}
+
+But the right hand sides of \eqref{eq:upeqrbv} and \eqref{eq:vpeqrbv} 
+are identical, so
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathrm{v}_{t}^{\boldsymbol{\mathit{m}}}(\boldsymbol{\mathit{m}}_{t},\boldsymbol{\mathit{p}}_{t}) & =  \mathrm{u}^{\prime}(\boldsymbol{\mathit{c}}_{t})
+\end{aligned}\end{gathered}\end{equation}
+and similar logic tells us that $\mathrm{v}_{t+1}^{\boldsymbol{\mathit{m}}}(\boldsymbol{\mathit{m}}_{t+1},\boldsymbol{\mathit{p}}_{t+1})=\mathrm{u}^{\prime}(\boldsymbol{\mathit{c}}_{t+1}),$ which 
+(substituting $\mathrm{u}^{\prime}$ for $\mathrm{v}^{\boldsymbol{\mathit{m}}}$ in \eqref{eq:vpeqrbv}) gives us the \hypertarget{EulerCGroFac}{Euler 
+equation for consumption}:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathrm{u}^{\prime}(\boldsymbol{\mathit{c}}_{t}) & =  \mathsf{R}\beta \mathrm{u}^{\prime}(\boldsymbol{\mathit{c}}_{t+1}) \\
+        1 & =  \mathsf{R}\beta \left(\frac{\boldsymbol{\mathit{c}}_{t+1}}{\boldsymbol{\mathit{c}}_{t}}\right)^{-\rho}
+\\  \left(\frac{\boldsymbol{\mathit{c}}_{t+1}}{\boldsymbol{\mathit{c}}_{t}}\right) & =  (\mathsf{R}\beta)^{1/\rho} \label{eq:cgrow}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Thus, consumption grows in every period by a factor $\text{\pmb{\Thorn}} \equiv (\mathsf{R}\beta)^{1/\rho}$, where we use the Old English letter $\text{\pmb{\Thorn}}$ to measure what we will call the ``absolute patience'' factor.
+Specifically, if 
+\begin{equation}\begin{gathered}\begin{aligned}
+     \text{\pmb{\Thorn}} & <  1 \label{eq:AIC}
+\end{aligned}\end{gathered}\end{equation}
+we will say that the consumer exhibits `absolute impatience' because this is the condition that guarantees that the level of consumption will be falling (and what better definition of absolute impatience could there be than deliberately spending so much that you will have to cut your spending in the future?).
+If $\text{\pmb{\Thorn}} > 1$ the consumer exhibits ``absolute patience'' (the consumer wants to defer resources into the future in order to achieve consumption growth).
+
+
+The Intertemporal Budget Constraint tells us that the present discounted 
+value of consumption must match the PDV of total resources:
+\begin{equation}\begin{gathered}\begin{aligned}
+        {\mathbb{P}}_{t}^{T}(\boldsymbol{\mathit{c}}) & =  \boldsymbol{\mathit{b}}_{t}+{\mathbb{P}}_{t}^{T}(\boldsymbol{\mathit{p}}).
+        \label{eq:ibc}
+\end{aligned}\end{gathered}\end{equation}
+
+Fact \FinSum~from \MathFactsList~can be used to show that the PDV of labor income (also called `human wealth'
+$\boldsymbol{\mathit{h}}_{t}$) is
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{h}}_{t} = {\mathbb{P}}_{t}^{T}(\boldsymbol{\mathit{p}}) & =  \sum_{n=0}^{T-t} \mathsf{R}^{-n}\boldsymbol{\mathit{p}}_{t+n}
+\\       & =  \boldsymbol{\mathit{p}}_{t}\sum_{n=0}^{T-t} \mathsf{R}^{-n}{\ensuremath{\mathrm{G}}}^{n} = \boldsymbol{\mathit{p}}_{t}\sum_{n=0}^{T-t} ({\ensuremath{\mathrm{G}}}/\mathsf{R})^{n}
+\\   & =  \boldsymbol{\mathit{p}}_{t}\left(\frac{1-({\ensuremath{\mathrm{G}}}/\mathsf{R})^{T-t+1}}{1-({\ensuremath{\mathrm{G}}}/\mathsf{R})}\right)    \label{eq:yfin}
+\end{aligned}\end{gathered}\end{equation}
+while the PDV of consumption is
+\begin{equation}\begin{gathered}\begin{aligned}
+        {\mathbb{P}}_{t}^{T}(\boldsymbol{\mathit{c}}) & =  \sum_{n=0}^{T-t} \mathsf{R}^{-n}\boldsymbol{\mathit{c}}_{t+n}
+\\       & =  \sum_{n=0}^{T-t} \mathsf{R}^{-n}\boldsymbol{\mathit{c}}_{t}((\mathsf{R}\beta)^{1/\rho})^{n}
+\\       & =  \boldsymbol{\mathit{c}}_{t} \sum_{n=0}^{T-t} [\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}]^{n}
+\\   & =  \boldsymbol{\mathit{c}}_{t}\left(\frac{1-[\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}]^{T-t+1}}{1-[\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}]}\right) \label{eq:cfin}.
+\end{aligned}\end{gathered}\end{equation}
+
+\hypertarget{cFuncAnalytical}{}
+We can solve the model by combining \eqref{eq:cfin} and \eqref{eq:yfin} using 
+\eqref{eq:ibc} to obtain:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & =  \underbrace{\left(\frac{1-[\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}]}{1-[\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}]^{T-t+1}}\right)}_{\equiv \kappa_{t}} \underbrace{\left[\boldsymbol{\mathit{b}}_{t}+\boldsymbol{\mathit{p}}_{t}\overbrace{\left(\frac{1-({\ensuremath{\mathrm{G}}}/\mathsf{R})^{T-t+1}}{1-({\ensuremath{\mathrm{G}}}/\mathsf{R})}\right)}^{\equiv h_{t}}\right]}_{\equiv \boldsymbol{\mathit{o}}_{t}} \label{eq:cfinhoriz}.
+\end{aligned}\end{gathered}\end{equation}
+where $\kappa_{t}$ is the marginal propensity to consume (MPC) out of \textbf{o}verall (human plus nonhuman) wealth $\boldsymbol{\mathit{o}}_{t}$.
+
+In order to apply \InfSum~to move to the infinite-horizon case ($T=\infty$), we need to impose the condition
+\begin{equation}\begin{gathered}\begin{aligned}
+        {\ensuremath{\mathrm{G}}}/\mathsf{R} & <  1
+\\  {\ensuremath{\mathrm{G}}}   & <  \mathsf{R}.  \label{eq:FHWCPF}
+\end{aligned}\end{gathered}\end{equation}
+Why?
+Because if income were expected to grow at a rate
+greater than the interest rate forever, then the PDV of future income
+would be infinite; with infinite human wealth, the problem has no
+well-defined solution.
+We henceforth call \eqref{eq:FHWCPF} the
+Finite Human Wealth Condition (FHWC).
+
+Similarly, if consumption starts at a positive level and grows by the factor $\text{\pmb{\Thorn}}=(\mathsf{R} \beta)^{1/\rho}$, in order for the PDV of consumption to be finite we must impose:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \underbrace{\left(\frac{(\mathsf{R}\beta)^{1/\rho}}{\mathsf{R}}\right)}_{\text{\pmb{\Thorn}}/{\mathsf{R}}} & < 1  \label{eq:PatR}
+\end{aligned}\end{gathered}\end{equation}
+and we will henceforth call $\text{\pmb{\Thorn}}/{\mathsf{R}}$ the `return patience factor'
+whose log is the `return patience rate' $\text{\thorn}_{\mathsf{r}} \equiv \log \text{\pmb{\Thorn}}/{\mathsf{R}}$ ($\text{\thorn}$ is the lower-case version of $\text{\pmb{\Thorn}}$) and
+what \eqref{eq:PatR} says is that the desired growth rate of
+consumption must be less than the interest rate in order for the model
+to have a well-defined solution.
+This condition therefore
+imposes a requirement that `impatience' be greater than some minimum amount.
+
+(For (much) more on the various definitions of impatience used in this handout, their implications, and parallel conditions for models with uncertainty, see \cite{BufferStockTheory}).
+
+If both the RIC and the FHWC hold, then the model has a well-defined 
+infinite horizon solution,\footnote{See \cite{BufferStockTheory} for a discussion of the case where the conditions do not hold.} as can be seen by realizing that 
+\begin{equation}\begin{gathered}\begin{aligned}
+   \lim_{T \rightarrow \infty} ({\ensuremath{\mathrm{G}}}/\mathsf{R})^{T-t+1} & =  0
+\\ \lim_{T \rightarrow \infty} (\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho})^{T-t+1} & = 0
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Substituting these zeros into \eqref{eq:cfinhoriz} yields 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & =  \left(1-\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}\right)\left[\boldsymbol{\mathit{b}}_{t}+\left(\frac{\boldsymbol{\mathit{p}}_{t}}{1-({\ensuremath{\mathrm{G}}}/\mathsf{R})}\right)\right] %\label{eq:cinfhor}
+\\      & =  \left(1-\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}\right)\left(\boldsymbol{\mathit{m}}_{t}-\boldsymbol{\mathit{p}}_{t}+\boldsymbol{\mathit{h}}_{t}\right)  %\label{eq:cmpk}
+\\      & =  \underbrace{\left(\frac{\mathsf{R} -(\mathsf{R}\beta)^{1/\rho}}{\mathsf{R}}\right)}_{ \equiv \kappa} \boldsymbol{\mathit{o}}_{t} \label{eq:cOfw}
+\end{aligned}\end{gathered}\end{equation}
+where $\boldsymbol{\mathit{o}}_{t}$ is the consumer's `\textbf{o}verall' or `total wealth,' the sum of human and 
+nonhuman wealth, and $\kappa$ is the infinite-horizon marginal propensity to consume.
+
+Now consider the question `What is the level of $\boldsymbol{\mathit{c}}_{t}$ that will 
+leave total wealth intact, allowing the same value of consumption in 
+period $t+1$ and forever after (that is, allowing $\boldsymbol{\mathit{c}}_{t+n}=\boldsymbol{\mathit{c}}_{t}~\forall~n>0$)?'  
+
+The intuitive answer is that the wealth-preserving level of spending is exactly equal to the
+(properly conceived) interest earnings on one's total
+wealth.
+We call this the `sustainable' level of consumption.
+
+
+Because human wealth is exactly like any other kind of wealth in this 
+perfect foresight framework, it is possible to work directly with the level of total 
+wealth $\boldsymbol{\mathit{o}}$ to find the sustainable level of spending.
+Suppose we assume the consumer will spend fraction 
+$\varkappa$ of total wealth in each period; the 
+$\varkappa$ that leaves wealth intact will be given by $\varkappa$ in
+\begin{equation*}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{o}}_{t+1} & =  (\boldsymbol{\mathit{o}}_{t}-\boldsymbol{\mathit{c}}_{t})\mathsf{R}
+\\  \bar\boldsymbol{\mathit{o}} & =  (\bar\boldsymbol{\mathit{o}}-\varkappa \bar\boldsymbol{\mathit{o}})\mathsf{R}
+\\      1 & =  (1-\varkappa)  \mathsf{R}
+\\      1/\mathsf{R} & =  (1-\varkappa)
+\\  \varkappa & =  1-1/\mathsf{R}
+\\  & =  \left(\frac{\mathsf{R} -1}{\mathsf{R}}\right)
+\\  & =  \mathsf{r}/\mathsf{R} \label{eq:PIHMPC}
+.
+\end{aligned}\end{gathered}\end{equation*}
+Thus, the consumer can spend only the interest earnings $\mathsf{r}$ on 
+wealth, divided by the return factor $\mathsf{R}$.
+(The division occurs because 
+the requirement is to be able to spend the same amount \textit{next} period,
+so you need to account for the time cost of today's spending by dividing by $\mathsf{R}$ which
+connects today's spending to tomorrow's wealth.)
+Note that the coefficient multiplying total wealth in \eqref{eq:cOfw}
+is also divided by $\mathsf{R}$.
+Thus, whether the consumer is spending
+more than the sustainable amount, exactly the sustainable amount, or
+less than the sustainable amount depends upon whether the numerator in
+\eqref{eq:cOfw} is greater than, equal to, or less than $\mathsf{r}$.
+As noted before,
+the consumer will be `absolutely impatient' if 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathsf{R}-(\mathsf{R}\beta)^{1/\rho} & >  \mathsf{r}  \\
+        1-(\mathsf{R}\beta)^{1/\rho} & >  0  \notag \\
+        1 & >  (\mathsf{R}\beta)^{1/\rho}. \notag
+\end{aligned}\end{gathered}\end{equation}
+
+Finally, if $\mathsf{R}\beta=1$ (which is to say, the interest rate
+exactly offsets the time preference rate), then $(\mathsf{R}\beta)^{1/\rho}=1$ regardless of the value of
+$\rho$ so that the consumer is `poised' on the knife-edge between
+patience and impatience.
+We refer to
+such a consumer as `absolutely poised.'
+Similarly, we say that a consumer for
+whom $\text{\pmb{\Thorn}}/{\mathsf{R}}=1$ is `return poised.'\footnote{`Return impatience' guarantees a positive marginal propensity to consume; absolute
+impatience guarantees a falling level of consumption.
+If $\mathsf{r} > 0$, return impatience
+will hold even if the consumer is `poised' with respect to absolute patience.}
+
+
+
+% The consumer will be impatient, spending more than his income, if $\Rfree\DiscFac<1$, and patient, spending less than his income, if $\Rfree\DiscFac>1$.
+
+Equation \eqref{eq:cOfw} can be simplified into something a bit 
+easier to handle by making some approximations.
+If $\beta = 
+1/(1+\nu)$, then we can use facts from \handoutM{MathFacts} to discover that
+\begin{equation*}\begin{gathered}\begin{aligned}
+      \log (\mathsf{R}\beta)^{1/\rho}/\mathsf{R} & =  (1/\rho) (\log \mathsf{R} + \log [1/(1+\nu) ]) - \log \mathsf{R}  \\
+     & =  (1/\rho) (\log(1+r) + \log 1 - \log (1+\nu) ) - \log \mathsf{R}  \\
+         & \approx  \rho^{-1}(\mathsf{r} -\nu)  - \mathsf{r} 
+\\      (\mathsf{R}\beta)^{1/\rho}/\mathsf{R} & \approx  1+(\rho^{-1}(\mathsf{r}-\nu)-\mathsf{r})
+.
+\end{aligned}\end{gathered}\end{equation*}
+
+Substituting this into \eqref{eq:cOfw} gives
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & \approx  \left(\mathsf{r}-\rho^{-1}(\mathsf{r}-\nu)\right)\boldsymbol{\mathit{o}}_{t} \label{eq:capprox}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+From this we can see again that whether the consumer is return patient, return poised, or return impatient
+depends on the relationship between $\mathsf{r}$ and $\nu$.
+Note also that 
+if $\rho = \infty$ then the consumer is infinitely averse to changing 
+the level of consumption, and so once again the consumer spends 
+exactly the sustainable amount.
+(This consumer is `absolutely poised' but `return impatient').
+
+
+Now a  brief digression on what `income' means in this model.
+Suppose
+for simplicity that the consumer had no capital assets (`bank balances' $\boldsymbol{\mathit{b}}_{t}=0$), and suppose
+that income was expected to stay constant at level $\boldsymbol{\mathit{p}}_{t+n}=\boldsymbol{\mathit{p}}~\forall~n>0$ forever.
+In this case human wealth would be:
+\begin{equation*}
+  \begin{gathered}
+    \begin{aligned}
+        \boldsymbol{\mathit{h}}_{t} & = \boldsymbol{\mathit{p}}+\boldsymbol{\mathit{p}}/\mathsf{R}+\boldsymbol{\mathit{p}}/\mathsf{R}^{2}+\ldots  \\
+         & = \boldsymbol{\mathit{p}}(1+1/\mathsf{R}+1/\mathsf{R}^{2}+\ldots)  \\
+         & = \boldsymbol{\mathit{p}}\left(\frac{1}{1-1/\mathsf{R}}\right)
+\\   & = \boldsymbol{\mathit{p}}\left(\frac{\mathsf{R}}{\mathsf{R} -1}\right)
+\\   & = \boldsymbol{\mathit{p}}\left(\frac{\mathsf{R}}{\mathsf{r}}\right)
+.
+\end{aligned}
+\end{gathered}
+\end{equation*}
+
+
+We found in equation \eqref{eq:PIHMPC} that 
+the level of consumption that leaves `wealth' $\boldsymbol{\mathit{o}}_{t}$ intact
+was
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & =  \left(\frac{\mathsf{r}}{\mathsf{R}}\right) \boldsymbol{\mathit{o}}_{t}  \\
+         & =  \left(\frac{\mathsf{r}}{\mathsf{R}}\right) (\underbrace{\boldsymbol{\mathit{b}}_{t}}_{=0}+\boldsymbol{\mathit{h}}_{t}) \\
+                        & =  \left(\frac{\mathsf{r}}{\mathsf{R}}\right)     \boldsymbol{\mathit{p}} \left(\frac{\mathsf{R}}{\mathsf{r}}\right)\\
+                        & =  \boldsymbol{\mathit{p}}.
+\end{aligned}\end{gathered}\end{equation}
+
+So in this case, spending the `interest income on human wealth' 
+corresponds to spending exactly your labor income.
+This seems less 
+mysterious if you think of income $\boldsymbol{\mathit{p}}_{t}$ as the `return' on your 
+human capital, which is an asset whose value is $\boldsymbol{\mathit{h}}_{t}$.
+If you `capitalize' your stream of 
+income using the interest factor $\mathsf{R}$ and then spend the interest income on the 
+capitalized stream, it stands to reason that you are spending the flow 
+of income from that source.
+
+With constant $\boldsymbol{\mathit{p}}$ we can rewrite \eqref{eq:capprox} as
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & \approx  \left(\mathsf{r}-\rho^{-1}(\mathsf{r}-\nu)\right)\left(\boldsymbol{\mathit{b}}_{t}+ \boldsymbol{\mathit{p}}\left(\frac{\mathsf{R}}{\mathsf{r}}\right)\right).
+\end{aligned}\end{gathered}\end{equation}
+
+$\mathsf{r}$ appears three times in this equation, which correspond (in
+order) to the income effect, the substitution effect, and the human
+wealth effect.
+To see this, note that an increase in the first
+$\mathsf{r}$ reflects an increase in the payout rate on total wealth (set
+$\boldsymbol{\mathit{p}} = 0$ and refer to our formula above for $\varkappa$, realizing
+that for small $\mathsf{r}$, $\mathsf{r}/\mathsf{R} \approx \mathsf{r}$.)
+That is, it
+simply reflects the consequence for consumption of an increase in interest
+income -- so it captures the `income effect' of interest rates.
+The second term
+corresponds to the subsitution effect, as can be seen from its
+dependence on the intertemporal elasticity of substitution
+$\rho^{-1}$.
+Finally, the $\boldsymbol{\mathit{p}}(\mathsf{R}/\mathsf{r})$ term clearly
+corresponds to human wealth, and therefore the sensitivity of
+consumption to $\mathsf{r}$ coming through this term corresponds to the
+human wealth \textit{effect}.
+
+\section{Normalizing By $\boldsymbol{\mathit{p}}$}
+
+The whole problem can be restated more simply by `dividing through' by the level of
+permanent income before solving.
+Hereafter, nonbold variables will be
+the normalized bold-letter equivalent, e.g.\
+$c_{t}=\boldsymbol{\mathit{c}}_{t}/\boldsymbol{\mathit{p}}_{t}$, and note that if
+$\boldsymbol{\mathit{p}}_{t+1}={\ensuremath{\mathrm{G}}} \boldsymbol{\mathit{p}}_{t}~\forall~t$ then from the standpoint
+of date $t$,
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathrm{u}(\boldsymbol{\mathit{c}}_{t+n}) & =  \frac{\boldsymbol{\mathit{c}}_{t+n}^{1-\rho}}{1-\rho}  \\
+         & =  \frac{(c_{t+n}\boldsymbol{\mathit{p}}_{t+n})^{1-\rho}}{1-\rho}  \\
+         & =  (\boldsymbol{\mathit{p}}_{t}{\ensuremath{\mathrm{G}}}^{n})^{1-\rho}\frac{c_{t+n}^{1-\rho}}{1-\rho}
+\end{aligned}\end{gathered}\end{equation}
+which means that 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \sum_{n=0}^{T-t} \beta^{n}\frac{\boldsymbol{\mathit{c}}_{t+n}^{1-\rho}}{1-\rho} & =  \boldsymbol{\mathit{p}}_{t}^{1-\rho}\sum_{n=0}^{T-t} ({\ensuremath{\mathrm{G}}}^{1-\rho}\beta)^{n} \frac{c_{t+n}^{1-\rho}}{1-\rho}  \label{eq:maxc2}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Furthermore, the accumulation equations can be rewritten by dividing
+both sides by $\boldsymbol{\mathit{p}}_{t+1}$:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{b}}_{t+1}/\boldsymbol{\mathit{p}}_{t+1} & =  \frac{(\boldsymbol{\mathit{m}}_{t}-\boldsymbol{\mathit{c}}_{t})\mathsf{R}}{\boldsymbol{\mathit{p}}_{t+1}}  \\
+        b_{t+1} & =   \left(\frac{(\boldsymbol{\mathit{m}}_{t}-\boldsymbol{\mathit{c}}_{t})\mathsf{R}}{\boldsymbol{\mathit{p}}_{t}}\right)\left(\frac{\boldsymbol{\mathit{p}}_{t}}{\boldsymbol{\mathit{p}}_{t+1}}\right) \\
+         & =  (m_{t}-c_{t})(\mathsf{R}/{\ensuremath{\mathrm{G}}})
+\end{aligned}\end{gathered}\end{equation}
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{m}}_{t+1} & =  \boldsymbol{\mathit{b}}_{t+1}+\boldsymbol{\mathit{p}}_{t+1}
+\\      m_{t+1} & =  b_{t+1}+1.
+\end{aligned}\end{gathered}\end{equation}
+
+Now if we define $\beth \equiv {\ensuremath{\mathrm{G}}}^{1-\rho}\beta$ and $\mathscr{R} \equiv \mathsf{R}/{\ensuremath{\mathrm{G}}}$,
+the original problem can be rewritten as:
+\begin{equation}
+\max~~\boldsymbol{\mathit{p}}_{t}^{1-\rho}\sum_{n=0}^{T-t} \beth^{n} \mathrm{u}(c_{t+n})             \label{eq:scaledmaxprob}
+\end{equation}
+subject to the constraints
+\begin{equation}\begin{gathered}\begin{aligned}
+   a_{t}   & =  m_{t}-c_{t}
+\\ b_{t+1} & =  a_{t}\mathscr{R}
+\\ m_{t+1} & =  b_{t+1}+1
+\end{aligned}\end{gathered}\end{equation}
+and we can go through the same steps as above to find that the solution
+is
+\begin{equation}\begin{gathered}\begin{aligned}
+        c_{t} & =  (1-\mathscr{R}^{-1}(\mathscr{R}\beth)^{1/\rho})\left[m_{t}-1+\overbrace{\left(\frac{1}{1-{1}/\mathscr{R}}\right)}^{\equiv h}\right] \label{eq:normC}
+\end{aligned}\end{gathered}\end{equation}
+subject to the `finite human wealth' condition
+\begin{equation}\begin{gathered}\begin{aligned}
+        {1} & <  \mathscr{R}
+\\  1 & <  \mathsf{R}/\ensuremath{\mathrm{G}}
+\end{aligned}\end{gathered}\end{equation}
+which is the same condition \eqref{eq:FHWCPF} as above, and also subject to the `return impatience condition'
+\begin{equation}\begin{gathered}\begin{aligned}
+                (\mathscr{R}\beth)^{1/\rho} & <  \mathscr{R}  
+\\              \left(\frac{\mathsf{R}}{{\ensuremath{\mathrm{G}}}}\beta {\ensuremath{\mathrm{G}}}^{1-\rho}\right)^{1/\rho} & <  \mathsf{R}/{\ensuremath{\mathrm{G}}}  
+\\              (\mathsf{R}\beta)^{1/\rho} & <  \mathsf{R}  
+\end{aligned}\end{gathered}\end{equation}  
+which is also the same as above in \eqref{eq:PatR}.
+
+Now note that \eqref{eq:normC} can be rewritten
+\begin{equation}\begin{gathered}\begin{aligned}
+        c_{t} & =  \left(\frac{\mathscr{R}-(\mathscr{R}\beth)^{1/\rho}}{\mathscr{R}}\right)o_{t}
+\\ & =  \underbrace{(1 - \text{\pmb{\Thorn}}/{\mathsf{R}})}_{\equiv \kappa} o_{t}
+\end{aligned}\end{gathered}\end{equation}
+where $o_{t}$ is the consumer's total wealth-to-permanent-labor-income 
+ratio, and $\kappa$ is the `marginal propensity to consume' out of wealth.
+
+As before, whether $o$ is rising or falling depends upon the 
+relationship between $\mathscr{R}-1$ and 
+$\mathscr{R}-(\mathscr{R}\beth)^{1/\rho}$.
+A consumer will be 
+drawing down his wealth-to-income ratio if
+\begin{equation}\begin{gathered}\begin{aligned}
+        \mathscr{R}-(\mathscr{R}\beth)^{1/\rho} & >  \mathscr{R}-1  \\
+        1-(\mathscr{R}\beth)^{1/\rho} & >  0  \\
+        1 & >  (\mathscr{R}\beth)^{1/\rho}
+.
+\end{aligned}\end{gathered}\end{equation}
+
+Now substituting the definitions of $\mathscr{R}$ and $\beth$
+we see that whether $o$ is rising or falling depends on whether
+\begin{equation}\begin{gathered}\begin{aligned}
+        1 & >  (\frac{\mathsf{R}}{{\ensuremath{\mathrm{G}}}}\beta {\ensuremath{\mathrm{G}}}^{1-\rho})^{1/\rho}
+\\  1 & >  (\mathsf{R}\beta {\ensuremath{\mathrm{G}}}^{-\rho})^{1/\rho}
+\\  1 & >  \underbrace{\left(\frac{(\mathsf{R}\beta)^{1/\rho}}{\ensuremath{\mathrm{G}}}\right)}_{\text{\pmb{\Thorn}}/{\mathcal{G}}} \label{eq:PatWGroCond}
+,
+\end{aligned}\end{gathered}\end{equation}
+where $\text{\pmb{\Thorn}}/{\mathcal{G}}$ is the `growth patience factor.'
+We call \eqref{eq:PatWGroCond} the `growth impatience condition' (GIC),\footnote{Or, GIC-PF if we want to highlight that this is the condition for the perfect foresight model.} and we say that the consumer is
+`growth impatient' if \eqref{eq:PatWGroCond} holds.
+
+Thus, whether the consumer is patient or impatient in the sense of
+building up or drawing down a wealth-to-income \textit{ratio} depends on
+whether the growth rate of labor income is less than, equal to, or
+greater than the growth rate of consumption.
+Analogously to our
+earlier usages, a consumer for whom $\text{\pmb{\Thorn}}/{\mathcal{G}}=1$ (equivalently, $\text{\thorn}_{g}= 0$) would be `growth poised.'
+
+To get the intuition for this, consider the case of a consumer with no
+nonhuman wealth, $b_{t}=0$.
+This consumer's absolute level of
+consumption will grow at $(\mathsf{R}\beta)^{1/\rho}$ and absolute
+level of income grows at ${\ensuremath{\mathrm{G}}}$, but the PDV of future consumption
+and future income must be equal.
+If income is growing faster
+than consumption but has the same PDV, consumption must be \textit{starting
+out} at a level \textit{higher} than income - which is the sense in 
+which this consumer is impatient (spending more than his income).
+`Growth impatience' is
+therefore the condition that causes consumers with no assets to want to borrow.
+
+\section{Applications}
+
+\subsection{How Large is the Human Wealth Effect?} \label{subsec:HWEffect}
+
+We can now apply the model to answer our first useful question: How large does the model 
+imply the `human wealth effect' is?
+
+
+For simplicity, assume that $b_{t} = 0$.
+Then the original
+version of the approximate formula \eqref{eq:capprox} tells us that the
+\textit{level} of consumption will be given by:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & \approx  \left(\mathsf{r} - \rho^{-1}(\mathsf{r}-\nu)\right)\left(\frac{\boldsymbol{\mathit{p}}_{t}}{1-{\ensuremath{\mathrm{G}}}/\mathsf{R}}\right)  \\
+         & \approx  \left(\mathsf{r} - \rho^{-1}(\mathsf{r}-\nu)\right)\left(\frac{\boldsymbol{\mathit{p}}_{t}}{\mathsf{r}-\mathrm{g}}\right). \label{eq:cofw2}
+\end{aligned}\end{gathered}\end{equation}
+
+We are interested only in calibrations of the model in which the consumer is `growth impatient' so that $\mathrm{g} > \rho^{-1}(\mathsf{r}-\beta)$ so if we define the rate of growth impatience as 
+\begin{equation}\begin{gathered}\begin{aligned} \label{eq:patwGro}
+\text{\thorn}_{g} & \equiv  \rho^{-1}(\mathsf{r}-\beta)-\mathrm{g} 
+\end{aligned}\end{gathered}\end{equation}
+we can write this as 
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & \approx  \boldsymbol{\mathit{p}}_{t} \left(\frac{\mathsf{r} - (\mathrm{g}+\text{\thorn}_{g})}{\mathsf{r}-\mathrm{g}}\right)
+\\ & =  \boldsymbol{\mathit{p}}_{t} \left(1 - \text{\thorn}_{g}/(\mathsf{r} - \mathrm{g})\right). \label{eq:CvsP}
+\end{aligned}\end{gathered}\end{equation}
+
+Remembering that imposition of the growth impatience condition is equivalent to assuming $\text{\thorn}_{g} < 0$, while the FHWC requires $\mathsf{r} > \mathrm{g}$, it is clear that the expression $-\text{\thorn}_{g}/(\mathsf{r}-\mathrm{g})$ will be positive:  The consumer will spend more than his permanent labor income.
+
+Now suppose we choose plausible values for $(\mathsf{r}, \nu, \mathrm{g}, \rho) = (0.04,0.04,0.02,2)$.
+Then \eqref{eq:cofw2} becomes:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & \approx  0.04 (\boldsymbol{\mathit{p}}_{t}/0.02) \\
+         & =  2 \boldsymbol{\mathit{p}}_{t}.
+\end{aligned}\end{gathered}\end{equation}
+
+Now suppose the interest rate changes to $\mathsf{r}=0.03$, while all other parameters
+remain the same.
+Then \eqref{eq:cofw2} becomes:
+\begin{equation}\begin{gathered}\begin{aligned}
+        \boldsymbol{\mathit{c}}_{t} & \approx  0.035 (\boldsymbol{\mathit{p}}_{t}/0.01)  \\
+         & =  3.5 \boldsymbol{\mathit{p}}_{t}.
+\end{aligned}\end{gathered}\end{equation}
+
+The point of this example is that for plausible parameter values, the
+human wealth effect is enormously stronger than the income and
+substitution effects, so that we should see large drops in consumption
+when interest rates rise and conversely strong gains when interest
+rates fall.
+This is a summary of the main point of the famous paper
+by \cite{summersCapTax}; Summers derives formulas for an economy with
+overlapping generations of finite-lifetime consumers, but those
+complications do not change the basic message.
+
+\subsection{How Does the Saving Rate Respond to Interest Rates?} % See also the answer key to PerfForesightCRRA-And-Great-Recession
+
+The level of saving can be defined as total income minus total consumption:
+\begin{equation}\begin{gathered}\begin{aligned}
+  \boldsymbol{\mathit{s}}_{t} & \approx  \mathsf{r} \boldsymbol{\mathit{a}}_{t-1} + \boldsymbol{\mathit{p}}_{t} - \boldsymbol{\mathit{c}}_{t}
+\end{aligned}\end{gathered}\end{equation}
+but since 
+\begin{equation}\begin{gathered}\begin{aligned}
+  \label{eq:cFromHandB}
+  \boldsymbol{\mathit{c}}_{t} & \approx  \overbrace{\boldsymbol{\mathit{p}}_{t} \left(1 - \text{\thorn}_{g}/(\mathsf{r} - \mathrm{g})\right)}^{\text{from }\eqref{eq:CvsP}}+\overbrace{(\mathsf{r}-\rho^{-1}(\mathsf{r}-\beta))\boldsymbol{\mathit{b}}_{t}}^{\text{from }\eqref{eq:capprox}}
+\end{aligned}\end{gathered}\end{equation}
+this can be rewritten as
+\begin{equation}\begin{gathered}\begin{aligned}
+ \boldsymbol{\mathit{s}}_{t} & \approx  \mathsf{r} \boldsymbol{\mathit{a}}_{t-1} + \boldsymbol{\mathit{p}}_{t}- \boldsymbol{\mathit{p}}_{t} \left(1 - \text{\thorn}_{g}/(\mathsf{r} - \mathrm{g})\right) - (\mathsf{r}-\rho^{-1}(\mathsf{r}-\beta))\mathsf{R} \boldsymbol{\mathit{a}}_{t-1}
+\\ & =  \mathsf{r} \boldsymbol{\mathit{a}}_{t-1} + \boldsymbol{\mathit{p}}_{t} \text{\thorn}_{g}/(\mathsf{r} - \mathrm{g})- (\mathsf{r}-\rho^{-1}(\mathsf{r}-\beta))\mathsf{R}\boldsymbol{\mathit{a}}_{t-1}
+\\ s_{t} & \approx  \mathsf{r} a_{t-1} + \text{\thorn}_{g}/(\mathsf{r} - \mathrm{g})- (\mathsf{r}-\rho^{-1}(\mathsf{r}-\beta))\mathsf{R} a_{t-1}
+\\ & \approx  \text{\thorn}_{g}/(\mathsf{r} - \mathrm{g})+ \rho^{-1}(\mathsf{r}-\beta)a_{t-1}
+\end{aligned}\end{gathered}\end{equation}
+(where the last approximations come from the assumptions that $1/\ensuremath{\mathrm{G}} \approx 1$) and that $\mathsf{r} \times (\mathsf{r}-\rho^{-1}(\mathsf{r}-\beta))$ is `small.'
+The saving \textit{rate} (for which we use the letter $\varsigma$ to distinguish it from $s$ above) is the ratio of saving to \textit{total} income (not just labor income):
+\begin{equation}\begin{gathered}\begin{aligned}
+\varsigma_{t} & =  \left(\frac{\text{\thorn}_{g}/(\mathsf{r} - \mathrm{g})+ \rho^{-1}(\mathsf{r}-\beta)a_{t-1}}{1+ \mathsf{r} a_{t-1}}\right).
+\end{aligned}\end{gathered}\end{equation}
+
+The first thing to notice about this expression is that as $a_{t-1}$ approaches infinity, the saving rate asymptotes to 
+\begin{equation}\begin{gathered}\begin{aligned}
+\varsigma_{t} & \approx  \left(\frac{\rho^{-1}(\mathsf{r}-\beta)}{\mathsf{r}}\right)
+\end{aligned}\end{gathered}\end{equation}
+and whether the saving rate is positive or negative depends on whether the consumer is absolutely impatient, absolutely poised, or absolutely patient.\footnote{In this partial equilibrium framework, we are assuming that the consumer's wealth can go to infinity without any effect on the aggregate interest rate.}
+
+Finally, if we rewrite this as 
+\begin{equation}\begin{gathered}\begin{aligned}
+\varsigma & \approx  \rho^{-1} (1 - \nu \mathsf{r}^{-1})
+\end{aligned}\end{gathered}\end{equation}
+then it is apparent that the response of the saving rate to the interest rate is 
+\begin{equation}\begin{gathered}\begin{aligned}
+  \label{eq:dsdr}
+  \left(\frac{d \varsigma}{d \mathsf{r}}\right) & =  \rho^{-1}\nu \mathsf{r}^{-2}.
+\end{aligned}\end{gathered}\end{equation}
+
+If we consider almost any plausible configuration of parameter values, say $\mathsf{r} = \nu=0.05$ and $\rho = 2$, this translates to a very large response of the saving rate with respect to $\mathsf{r}$ (in the case of the parameter values mentioned above, $(1/2)(20)=10$).
+
+
+\pagebreak\appendix
+\centerline\textbf{\LARGE Appendix}\medskip
+
+\setcounter{section}{0}
+
+\section{The Limiting Solution to the Perfect Foresight Model if the FHWC Fails}\label{sec:PFwhenFHWfails}
+
+\subsection{When the RIC Holds}
+Consider first a circumstance in which the RIC holds ($\text{\pmb{\Thorn}}/{\mathsf{R}}<1$).
+In this case, the perfect foresight unconstrained model does not have a sensible solution because human wealth is infinite while the model implies that the optimal policy is to consume a positive proportion of human wealth.
+$\mathrm{c}(m)=\infty~\forall~m$ is not a useful (or plausible!) solution.
+
+\subsection{When the RIC Fails}
+The alternative case is when the RIC fails ($\text{\pmb{\Thorn}}/{\mathsf{R}}=1$).
+Here, the only way to make sense of the model is to think about the limit of the finite horizon model as the horizon extends to infinity.
+This is because behavior reflects a competition between two pathologies that characterize the infinite horizon solution:  It exhibits a limiting MPC of zero out of total wealth, which includes human wealth -- which approaches infinity.
+A limiting solution of $\mathrm{c}(m) = 0 \times \infty$ is even less useful than $\mathrm{c}(m) = \infty$!
+
+
+It turns out that the limiting solution is not ambiguous, however.
+The finite horizon solution implies that consumption out of human wealth when the end of life is $n$ periods in the future is 
+\begin{equation}\begin{gathered}\begin{aligned}
+  \kappa_{n} h_{n} & =  \left(\frac{(\mathsf{R}^{-1}{\ensuremath{\mathrm{G}}})^{{n}+1}-1}{[\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}]^{{n}+1}-1}\right) 
+\end{aligned}\end{gathered}\end{equation}
+whose limit is given by 
+\begin{equation}\begin{gathered}\begin{aligned}
+\lim_{{n} \uparrow \infty} \kappa_{n} h_{n} & =  \lim_{n \uparrow \infty} \left(\frac{(\mathsf{R}^{-1}{\ensuremath{\mathrm{G}}})^{{n}+1}}{[\mathsf{R}^{-1}(\mathsf{R}\beta)^{1/\rho}]^{{n}+1}}\right)
+\\ & =  \lim_{n \uparrow \infty} \left(\frac{1}{\text{\pmb{\Thorn}}/{\mathcal{G}}^{(n+1)}}\right)
+\\ & =  \infty
+\end{aligned}\end{gathered}\end{equation}
+since the if the FHWC condition fails ($\ensuremath{\mathrm{G}} > \mathsf{R}$) then if the RIC $\text{\pmb{\Thorn}}/\mathsf{R} < 1$ holds, the GIC $\text{\pmb{\Thorn}} < \ensuremath{\mathrm{G}}$ must hold, which guarantees $\text{\pmb{\Thorn}}/{\mathcal{G}} < 1$ so that $\text{\pmb{\Thorn}}/{\mathcal{G}}^{n+1}$ approaches zero as $n \uparrow \infty.$
+
+\hypertarget{Useful-Analytical-Results}{}
+\section{Useful Analytical Results}
+
+Given the result from  \eqref{eq:cgrow} that
+\begin{equation}\begin{gathered}\begin{aligned}
+  c_{t+n} & =  \text{\pmb{\Thorn}}^{n} c_{t} \notag
+\end{aligned}\end{gathered}\end{equation}
+we can rewrite the value function as
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} & =  \mathrm{u}(c_{t}) + \beta \mathrm{u}(c_{t}\text{\pmb{\Thorn}}) + \beta^{2} \mathrm{u}(c_{t} \text{\pmb{\Thorn}}^{2}) + ...
+  \\ & =  (1-\rho)^{-1}\left(c_{t}^{1-\rho} + \beta (c_{t}\text{\pmb{\Thorn}})^{1-\rho} + \beta^{2} (c_{t} \text{\pmb{\Thorn}}^{2})^{1-\rho} + ...\right)\notag 
+  \\ & =  (1-\rho)^{-1}\left(c_{t}^{1-\rho}(1+\beta \text{\pmb{\Thorn}}^{1-\rho} + \left(\beta \text{\pmb{\Thorn}}^{1-\rho})^{2} + ... \right) \right)\notag 
+\\ & =  \mathrm{u}(c_{t})\left(1+\beta \text{\pmb{\Thorn}}^{1-\rho} + (\beta \text{\pmb{\Thorn}}^{1-\rho})^{2} + ... \right)\notag 
+\end{aligned}\end{gathered}\end{equation}
+but since $\beta \text{\pmb{\Thorn}}^{1-\rho} = \text{\pmb{\Thorn}}/{\mathsf{R}}$,\footnote{
+\begin{equation}\begin{gathered}\begin{aligned}
+  \beta \text{\pmb{\Thorn}}^{1-\rho} & =  \beta (\mathsf{R} \beta)^{\frac{1-\rho}{\rho}}
+  \\ & =                               \beta (\mathsf{R} \beta)^{1/\rho-1}
+  \\ & =             (\mathsf{R} \beta)^{1/\rho} / \mathsf{R}
+           \\ & =  \text{\pmb{\Thorn}}/{\mathsf{R}}
+\end{aligned}\end{gathered}\end{equation}}
+this reduces to  \hypertarget{vFuncAnalytical}{}
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} &=  \mathrm{u}(c_{t})\overbrace{(1+\text{\pmb{\Thorn}}/{\mathsf{R}}+\text{\pmb{\Thorn}}/{\mathsf{R}}^{2}+...+\text{\pmb{\Thorn}}/{\mathsf{R}}^{T-t})}^{\equiv {\mathbb{P}}_{t}(\mathrm{c})} \label{eq:vFuncAnalytical}
+\end{aligned}\end{gathered}\end{equation}
+where ${\mathbb{P}}_{t}(\mathrm{c})$ is the discounted value of future consumption growth (that is, the discounted value of the ratio of future consumption to today's consumption).
+
+
+\cite{BufferStockTheory} shows (\href{https://www.econ2.jhu.edu/people/ccarroll/papers/BufferStockTheory/#MPCnvrsIsCPDV}{in an appendix}) that ${\mathbb{P}}_{t}(\mathrm{c}) = \kappa_{t}^{-1}$, which means that we can write value as
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} & =  \mathrm{u}(c_{t})\kappa^{-1}_{t}
+  \\ & =  \left(\frac{(o_{t}\kappa_{t})^{1-\rho}}{1-\rho}\right)\kappa_{t}^{-1}
+\\ & =  \mathrm{u}(o_{t})\kappa_{t}^{-\rho}           
+\end{aligned}\end{gathered}\end{equation}
+
+
+\bibliographystyle{econark}\bibliography{\texname}
+
+\end{document}
+
+If consumption is simply a function of overall wealth bank balances $o_{t}$, we can derive a convenient recursive formula for the inverse of the MPC: \hypertarget{MPCrecursive}{}
+\begin{equation}\begin{gathered}\begin{aligned}
+  \mathrm{u}^{\prime}(\kappa_{t} o_{t}) & = \mathsf{R} \beta \mathrm{u}^{\prime}(\kappa_{t+1}\overbrace{o_{t}(1-\kappa_{t})\mathsf{R}}^{o_{t+1}}) \label{eq:MPCrecursive}
+\\ \kappa_{t} o_{t} & = (\mathsf{R} \beta)^{-1/\rho} \kappa_{t+1}o_{t}(1-\kappa_{t}) \mathsf{R}\notag 
+\\ \underbrace{\mathsf{R}^{-1} (\mathsf{R} \beta)^{1/\rho}}_{\text{\pmb{\Thorn}}/{\mathsf{R}}} \kappa_{t}  & =  \kappa_{t+1}(1-\kappa_{t})\notag 
+\\ (\text{\pmb{\Thorn}}/{\mathsf{R}} \kappa_{t})^{-1}  & =  \kappa_{t+1}^{-1}(1-\kappa_{t})^{-1}\notag 
+\\ (1-\kappa_{t}) \kappa_{t}^{-1}  & = \text{\pmb{\Thorn}}/{\mathsf{R}}  \kappa_{t+1}^{-1}\notag 
+\\ \kappa_{t}^{-1}-1  & = \text{\pmb{\Thorn}}/{\mathsf{R}}  \kappa_{t+1}^{-1}\notag 
+\\ \kappa_{t}^{-1}  & = 1+\text{\pmb{\Thorn}}/{\mathsf{R}}  \kappa_{t+1}^{-1}\notag 
+\end{aligned}\end{gathered}\end{equation} 
+which implies that if the MPC in the last period $T$ is $\kappa_{T}=1$ then  from any date $t \leq T$ we can write
+\begin{equation}\begin{gathered}\begin{aligned}
+  \kappa_{t}^{-1} & =  1 + \text{\pmb{\Thorn}}/{\mathsf{R}} + \text{\pmb{\Thorn}}/{\mathsf{R}}^{2} + ... + \text{\pmb{\Thorn}}/{\mathsf{R}}^{T-t} . \label{eq:MPCrecursiveSum}
+\end{aligned}\end{gathered}\end{equation}
+
+
+But the series on the RHS in \eqref{eq:vFuncAnalytical} and \eqref{eq:MPCrecursiveSum} are identical!
+So $\kappa^{-1}_{t} = {\mathbb{P}}_{t}(\mathrm{c})$, and we can equivalently write
+\begin{equation}\begin{gathered}\begin{aligned}
+  v_{t} &= \mathrm{u}(c_{t})\kappa^{-1}_{t}.
+\end{aligned}\end{gathered}\end{equation}
+
+Now note that if we define a utility-inverse of the value function as $\vInv \equiv \left((1-\rho) \mathrm{v}\right)^{1/(1-\rho)}$, then consumption exceeds its minimum possible value at $\underline{m}$ (where consumption exceeds $\mathrm{c}(\underline{m})=0$) by $c_{t}=\kappa_{t}(m-\underline{m}):$
+\begin{equation}\begin{gathered}\begin{aligned}
+  \vInv_{t}(m) &= \kappa_{t}(m_{t}-\underline{m}_{t}) \kappa_{t}^{-1/(1-\rho)}
+  \\ & = (m - \underline{m})\kappa^{((1-\rho)/(1-\rho)-1/(1-\rho))}
+  \\ & = (m - \underline{m})\kappa^{-\rho/(1-\rho)}
+\end{aligned}\end{gathered}\end{equation}
+which is linear, and makes it very easy to compute
+\begin{equation}\begin{gathered}\begin{aligned}
+  \mathrm{v}_{t}(m) &= \mathrm{u}\left((m-\underline{m})\kappa_{t}^{-\rho/(1-\rho)}\right)
+%  \vFunc_{t}^{\prime}(\mNrm) &= \left(\cFunc_{t}(\mNrm)\right)^{-\CRRA}\MPC_{t} \PDV_{t}(\cFunc)
+\end{aligned}\end{gathered}\end{equation}
+                        
+\end{document}
+
+
+\begin{equation}\begin{gathered}\begin{aligned}
+  \texttt{vFuncNvrs}(\nabla m) & =   \kappa^{-\rho/(1-\rho)} (\nabla m) \\
+  \texttt{vFuncNvrs}(\nabla m) & =   \kappa^{-\rho/(1-\rho)+1/(1-\rho)-1/(1-\rho)} (\nabla m) \\
+  \texttt{vFuncNvrs}(\nabla m) & =   \kappa^{1-1/(1-\rho)} (\nabla m) \\
+  \mathrm{u}(\texttt{vFuncNvrs}(\nabla m)) & = \frac{\left(\kappa^{1-1/(1-\rho)} (\nabla m)\right)^{1-\rho}}{1-\rho} \\
+  \mathrm{u}(\texttt{vFuncNvrs}(\nabla m)) & = \kappa^{-1}\frac{\left(\kappa^{1-\rho} (\nabla m)^{1-\rho}}{1-\rho} \\
+  \mathrm{u}(\texttt{vFuncNvrs}(\nabla m)) & = \kappa^{-1}\frac{\left(\kappa (\nabla m)\right)^{1-\rho}}{1-\rho} \\
+  \mathrm{u}(\texttt{vFuncNvrs}(\nabla m)) & = \frac{\left(\kappa^{-\rho/(1-\rho)} (\nabla m)\right)^{1-\rho}}{1-\rho} \\
+  \\ & = \frac{\left(\kappa^{-\rho} (\nabla m)\right)^{1-\rho}}{1-\rho} \\
+  \\ & = \frac{\left(\kappa (\nabla m)\right)^{-\rho}(\nabla m)}{1-\rho} \\  
+  \\ & = c^{-\rho}(\nabla m)(1-\rho)^{-1} \\  
+\end{aligned}\end{gathered}\end{equation}
+
+
+
