@@ -1,7 +1,7 @@
 # JHU Economics 180.603 - Advanced Macroeconomics I
 ## Intertemporal Choice
 
-This repo contains hte course syllabus, lecture notes, etc.
+This repo contains the course syllabus, lecture notes, etc.
 
 You will find problem sets, exams, and other ephemera in the repo `ccarrollATjhuecon/Choice-YYYY` 
 where `YYYY` is the year in which you are taking the course.
