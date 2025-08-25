@@ -1,0 +1,9 @@
+{
+  "config": ".markdownlint.json",
+  "globs": [
+    "**/*.md"
+  ],
+  "ignores": [
+    "**/@resources/**"
+  ]
+}

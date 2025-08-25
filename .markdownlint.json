@@ -1,0 +1,22 @@
+{
+  "default": true,
+  "MD013": {
+    "line_length": 120,
+    "heading_line_length": 120,
+    "code_block_line_length": 120,
+    "tables": false
+  },
+  "MD033": false,
+  "MD034": false,
+  "MD041": true,
+  "MD022": {
+    "lines_above": 1,
+    "lines_below": 1
+  },
+  "MD012": {
+    "maximum": 2
+  },
+  "MD024": {
+    "siblings_only": true
+  }
+}
