@@ -26,7 +26,7 @@ jobs:
       run: npm install -g markdownlint-cli2
       
     - name: Fix markdown files
-      run: markdownlint-cli2 --fix
+      run: markdownlint-cli2 --config .github/.markdownlint-cli2.jsonc --fix
       
     - name: Check for changes
       id: verify-changed-files
@@ -48,3 +48,5 @@ jobs:
         
     - name: Lint markdown files (final check)
       uses: DavidAnson/markdownlint-cli2-action@v16
+      with:
+        config: '.github/.markdownlint-cli2.jsonc'
