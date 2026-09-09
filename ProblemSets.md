@@ -21,8 +21,12 @@ are copies, and copies go stale.
 
 Subscribe to it, and you will not have to keep track of this yourself:
 
-- [Add to Google Calendar](https://calendar.google.com/calendar/u/0?cid=amh1ZWNvbi5vcmdfdjJrc28yaHAxbWVtazB2a2ExZ29tdm9ybThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
-- [Subscribe by iCal](https://calendar.google.com/calendar/ical/jhuecon.org_v2kso2hp1memk0vka1gomvorm8%40group.calendar.google.com/public/basic.ics) (Apple Calendar, Outlook)
+- [Add to Google Calendar][gcal]
+- [Subscribe by iCal][ical] (Apple Calendar, Outlook)
+
+[gcal]: https://calendar.google.com/calendar/u/0?cid=amh1ZWNvbi5vcmdfdjJrc28yaHAxbWVtazB2a2ExZ29tdm9ybThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+[ical]: https://calendar.google.com/calendar/ical/jhuecon.org_v2kso2hp1memk0vka1gomvorm8%40group.calendar.google.com/public/basic.ics
+
 
 Not every deadline for the term goes up at once. The calendar tells you what is next.
 
