@@ -4,7 +4,8 @@
 
 **The lecture notes are the book** *A Gentle Introduction to Intertemporal Choice*:
 <https://intertemporal-choice.github.io/>. **The syllabus** is at
-<https://ccarrollatjhuecon.github.io/Choice-Syllabus-Latest/>.
+<https://ccarrollatjhuecon.github.io/Choice/Syllabus/>, built from `Syllabus/` in
+this repository.
 
 The syllabus is built from `Syllabus/`; the published site is assembled from
 `web/` and `Syllabus/docs/` by `.github/workflows/deploy-pages.yml`.
