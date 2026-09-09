@@ -1,0 +1,82 @@
+########################################################################
+# Publish the course site.
+#
+# Two sources, assembled at deploy time -- nothing is committed to a
+# docs/ directory in this repository:
+#
+#   web/           ->  /            the landing page (hand-edited SOURCE)
+#   Syllabus/docs/ ->  /Syllabus/   built by build-web.yml from Syllabus.tex
+#
+# Deploying from an artifact rather than a branch is what lets the
+# syllabus keep its own docs/ directory one level down. Classic
+# branch-based Pages can only serve the repository root or /docs, so
+# Syllabus/docs/ would be unservable and build-web.sh would have needed
+# rewriting to publish somewhere else. It does not.
+#
+# Consequence worth knowing: this is an artifact deploy, so Jekyll never
+# runs. Everything published must already be a static file. It is --
+# make4ht emits plain HTML, and the landing page is hand-written HTML.
+########################################################################
+
+name: deploy-pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'web/**'
+      - 'Syllabus/docs/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel a half-finished deployment; queue behind one instead.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp -R web/. _site/
+          mkdir -p _site/Syllabus
+          cp -R Syllabus/docs/. _site/Syllabus/
+          # _config.yml is a leftover of branch-based Pages, where Jekyll
+          # needed it to serve the directory at all. An artifact deploy
+          # does not run Jekyll, so it would be published as a stray file.
+          rm -f _site/Syllabus/_config.yml
+
+      - name: Check the assembled site before publishing it
+        # A silently empty or truncated build is the failure that matters:
+        # it deploys cleanly and nobody notices until a student does.
+        run: |
+          set -euo pipefail
+          test -s _site/index.html
+          test -s _site/Syllabus/index.html
+          grep -q 'Intertemporal Choice' _site/index.html
+          grep -q 'Teaching Assistant' _site/Syllabus/index.html
+          if grep -q '>?</span>' _site/Syllabus/index.html; then
+            echo 'Unresolved citations in the syllabus HTML; refusing to publish.' >&2
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
