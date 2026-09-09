@@ -81,9 +81,14 @@ jobs:
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # -f on both: this repo's .gitignore matches *.4ct, *.4tc, *.idv,
-          # *.lg and *.xref, which Syllabus/docs tracks, and Syllabus.pdf.
-          git add -A -f -- Syllabus/docs
+          # NO -f here. git add -A already stages changes to TRACKED files
+          # regardless of ignore rules -- ignores only affect untracked ones --
+          # so the tracked *.4ct, *.4tc, *.idv, *.lg and *.xref are picked up
+          # anyway. Forcing additionally overrode Syllabus/docs/.gitignore and
+          # swept in six LaTeX intermediates (.aux .bbl .dep .dvi .log .tmp)
+          # that had never been tracked. Syllabus.pdf below is a single named
+          # file, so its -f is precise.
+          git add -A -- Syllabus/docs
           git add -f Syllabus/Syllabus.pdf
           if git diff --cached --quiet; then
             echo 'docs/ already current - nothing to commit'
