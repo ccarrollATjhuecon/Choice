@@ -3,8 +3,18 @@ name: Markdown Lint & Fix
 on:
   push:
     branches: [ main, master ]
+    paths:
+      - '**/*.md'
+      - '.github/.markdownlint-cli2.jsonc'
+      - '.github/workflows/markdown-lint.yml'
   pull_request:
     branches: [ main, master ]
+
+# Shared with build-web.yml. Both workflows commit and push, so without one
+# group they race on a push to master and one push is rejected non-fast-forward.
+concurrency:
+  group: push-to-master
+  cancel-in-progress: false
 
 jobs:
   markdown-lint-fix:
@@ -23,7 +33,7 @@ jobs:
         node-version: '20'
         
     - name: Install markdownlint-cli2
-      run: npm install -g markdownlint-cli2
+      run: npm install -g markdownlint-cli2@0.23.2
       
     - name: Fix markdown files
       run: markdownlint-cli2 --config .github/.markdownlint-cli2.jsonc --fix
@@ -31,18 +41,21 @@ jobs:
     - name: Check for changes
       id: verify-changed-files
       run: |
-        if [ -n "$(git status --porcelain)" ]; then
+        # Scoped to markdown, to match the scoped 'git add' below. Unscoped, a
+        # stray artifact from any other job reports changed=true, the add stages
+        # nothing, and the commit fails on an empty index.
+        if [ -n "$(git status --porcelain -- '*.md')" ]; then
           echo "changed=true" >> $GITHUB_OUTPUT
         else
           echo "changed=false" >> $GITHUB_OUTPUT
         fi
         
     - name: Commit fixes
-      if: steps.verify-changed-files.outputs.changed == 'true'
+      if: steps.verify-changed-files.outputs.changed == 'true' && github.event_name == 'push'
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add -A
+        git add -A -- '*.md'
         git commit -m "Auto-fix markdown linting issues [skip ci]"
         git push
         

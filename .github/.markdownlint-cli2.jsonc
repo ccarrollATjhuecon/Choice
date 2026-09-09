@@ -1,9 +1,39 @@
+// markdownlint-cli2 configuration.
+//
+// The "config" key must be an INLINE OBJECT. It was a path string
+// (".github/.markdownlint.json") from the beginning, which markdownlint-cli2
+// silently ignores -- so none of these settings were ever applied and MD013
+// fired at its default 80 columns instead of 120. That, not the prose, is why
+// this repo's CI was red. Keep the rules here; do not reintroduce a second file.
 {
-  "config": ".github/.markdownlint.json",
+  "config": {
+    "default": true,
+    "MD013": {
+      "line_length": 120,
+      "heading_line_length": 120,
+      "code_block_line_length": 120,
+      "tables": false
+    },
+    "MD033": false,
+    "MD034": false,
+    "MD041": true,
+    "MD022": { "lines_above": 1, "lines_below": 1 },
+    "MD012": { "maximum": 2 },
+    "MD024": { "siblings_only": true },
+    // Table pipe spacing. A house-style rule added by a later markdownlint;
+    // adopting it would mean reformatting tables in frozen documents.
+    "MD060": false
+  },
   "globs": [
     "**/*.md"
   ],
+  // Vendored third-party trees. These are other people's files: the auto-fixer
+  // must never rewrite them, and CI must never commit a reformatting of them.
+  // "Syllabus/**" is pre-emptive, for the syllabus project moving in here.
   "ignores": [
-    "**/@resources/**"
+    "**/@resources/**",
+    "**/texmf-local/**",
+    "Syllabus/**",
+    "**/.specstory/**"
   ]
 }
