@@ -1,0 +1,427 @@
+©
+
+June 28, 2025, Christopher D. Carroll
+
+2PeriodLCModel
+
+The Fisher Two-Period Optimal Consumption Problem
+Irving Fisher (1930) first analyzed the optimization problem of a consumer who faces
+no uncertainty and lives for two periods.
+
+1 Mathematical Analysis
+In its most general form, the household’s lifetime value function can be written
+V(c 1 , c 2 )
+where the first argument reflects consumption in ‘youth’ while the second argument
+represents consumption in ‘old age’ and we assume that the derivatives with respect to
+the first and second arguments are positive,
+V1 , V2 > 0,
+
+(1)
+
+while the second derivatives are negative,
+V11 , V22 < 0.
+
+(2)
+
+The consumer begins the first period with resources of b 1 (think ‘bank balances’) and
+income of y 1 . Total resources are divided between consumption and end-of-period assets
+a 1 (‘assets after all actions’ in period 1):
+b 1 + y 1 = c1 + a 1,
+a 1 = b 1 + y 1 − c1.
+
+(3)
+
+Balances at the beginning of period 2 are equal to end-of-first-period accumulated
+assets a 1 , rewarded by a gross interest factor R = (1 + r):
+b 2 = a 1 R.
+
+(4)
+
+This is the dynamic budget constraint or DBC for this problem. A DBC links two
+adjacent periods of time. A more comprehensive kind of constraint is the intertemporal
+budget constraint (IBC):
+c 1 + c 2 /R ≤ y 1 + y 2 /R + b 1 ,
+
+(5)
+
+which must be satisfied over an extended (multiperiod) span of time like a lifetime.
+For various purposes, it is useful to keep track of human wealth h t , defined as the
+present discounted value of future labor income (the operator Pt (•) denotes the present
+discounted value of the variable • from the perspective of the beginning of period t
+through the end of the horizon),
+h t = Pt (y)
+h 1 = y 1 + y 2 /R
+
+1
+
+(6)
+
+Because we have assumed (in (1)) that an additional unit of consumption always yields
+extra utility, we can reach our first conclusion (as opposed to assumption) in the model:
+Once the consumer has reached the last period of life, he will consume all available
+resources:
+c2 = b 2 + y 2.
+(7)
+This means that the IBC will hold with equality (if it did not, utility could be increased
+by consuming more in one or both periods). Thus, the IBC can be rewritten as
+c 1 + c 2 /R = h 1 + b 1 .
+
+(8)
+
+The general form that the IBC will take is that the present discounted value of lifetime
+spending must equal the present discounted value of lifetime resources:
+Pt (c) = Pt (y) + b t .
+
+(9)
+
+Substituting in the definition of b 2 means that our problem can now be stated as:
+max V(c 1 , c 2 )
+
+{c 1 ,c 2 }
+
+s.t.
+c 2 = (b 1 + y 1 − c 1 )R + y 2 .
+Now we can write the problem as a Lagrange multiplier problem, where the maximand
+is:
+V(c 1 , c 2 ) + (c 2 − (b 1 + y 1 − c 1 )R − y 2 ) λ.
+
+(10)
+
+The first order conditions are:
+V1 + Rλ = 0
+V2 = −λ
+
+(11)
+
+and substituting the second of these into the first we get
+V1 = RV2 .
+
+(12)
+
+This is the same condition you get when deciding between two commodities at a
+point in time, where we can now think of R as the intertemporal price: How much of
+good 2 (consumption in period 2) do I get in exchange for giving up a unit of good 1
+(consumption in period 1).
+Now suppose that the consumer’s utility is time-separable, and the felicity function
+(felicity is the utility obtained in a single period of a multi-period problem) is the same
+in both periods of life, so that
+V(c 1 , c 2 ) = u(c 1 ) + βu(c 2 )
+
+(13)
+
+where β is a time preference factor that specifies how the consumer trades off utility in
+period 1 against utility in period 2.1
+1
+
+Paul Samuelson (1937, 1958) introduced the discounting of future utility into the problem. See ? for
+a comprehensive review of the still-controversial topic of time discounting.
+
+2
+
+From our assumptions (1) and (2) we know that the felicity function must satisfy
+u′ (•) > 0
+u′′ (•) < 0,
+
+(14)
+
+and since the felicity functions are the same in both periods we have that
+V1 (c 1 , c 2 ) = u′ (c 1 )
+V2 (c 1 , c 2 ) = βu′ (c 2 ).
+
+(15)
+
+Substituting these equations into (12) yields the Euler equation for consumption:
+u′ (c 1 ) = Rβu′ (c 2 ).
+
+(16)
+
+The Euler equation is a central result in intertemporal optimization theory, and will
+be used again and again as the course progresses. It is therefore worth studying carefully
+to be sure you understand it thoroughly.
+To help obtain the intuition for why the Euler equation is necessary for optimality,
+consider the following thought experiment. Designate c ∗1 and c ∗2 as the optimal levels
+of consumption in this problem, the levels that solve the maximization problem under
+some set of circumstances. Thus, the highest attainable utility is
+u(c ∗1 ) + βu(c ∗2 ).
+
+(17)
+
+Now consider reducing consumption by some small amount ϵ in period 1, investing
+that ϵ so that it grows to Rϵ in period 2, and then consuming it in period 2. What
+happens to utility?
+Taking first-order Taylor expansions, the levels of first-period and second-period utility
+are now
+u(c ∗1 − ϵ) ≈ u(c ∗1 ) − u′ (c ∗1 )ϵ
+(18)
+u(c ∗2 + Rϵ) ≈ u(c ∗2 ) + u′ (c ∗2 )Rϵ.
+Now the difference between the maximum possible utility and the new situation is
+given by
+
+
+u(c ∗1 ) + βu(c ∗2 ) − u(c ∗1 ) − u′ (c ∗1 )ϵ + β u(c ∗2 ) + u′ (c ∗2 )Rϵ = u′ (c ∗1 )ϵ − βu′ (c ∗2 )Rϵ. (19)
+But it must be the case that (19) is approximately equal to zero. To see why, suppose
+it were a negative number. That would mean that moving from the original situation
+with {c 1 , c 2 } = {c ∗1 , c ∗2 } to the new situation with {c 1 , c 2 } = {c ∗1 − ϵ, c ∗2 + Rϵ} resulted
+in an increase in utility. But we assumed that c ∗1 , c ∗2 were already the utility-maximizing
+choices, which clearly could not be true if adjusting c ∗1 downward by ϵ and c ∗2 upward
+by Rϵ increased utility. Similarly, if the expression were positive, then utility could
+be increased by doing the opposite (i.e. increasing consumption in period 1 by ϵ and
+reducing it in period 2 by Rϵ). Thus, in either case if the expression is not zero, we have
+a contradiction to the assumption that c ∗1 and c ∗2 are the utility-maximizing choices.
+
+3
+
+To make further progress, it is necessary to make more specific assumptions about the
+structure of the utility function. The most common assumption is that utility takes the
+Constant Relative Risk Aversion form,
+ 1−ρ 
+c
+(20)
+,
+u(c) =
+1−ρ
+with marginal utility
+u′ (c) = c −ρ .
+
+(21)
+
+Consider equation (16) with CRRA utility,
+−ρ
+c −ρ
+1 = Rβc 2
+
+c 2 /c 1 = (Rβ)1/ρ
+
+(22)
+
+c 2 = (Rβ)1/ρ c 1 .
+Now note that this equation allows us to calculate the intertemporal elasticity of
+substitution as the change in the ratio of the log of c 2 /c 1 to the log change in the
+intertemporal price R:
+
+
+  
+
+d
+c2
+d
+log
+log(Rβ)1/ρ
+=
+d log R
+c1
+d log R
+(23)
+−1
+=ρ .
+Next note that from (22) we can calculate the PDV of lifetime consumption from the
+perspective of the first period of life as
+P1 (c) = c 1 + R−1 c 2
+
+
+= 1 + R−1 (Rβ)1/ρ c 1 .
+
+(24)
+
+Now we can use the intertemporal budget constraint:
+
+c1
+
+
+
+Pt (c) = b t + Pt (y)
+
+1 + R−1 (Rβ)1/ρ = b 1 + y 1 + R−1 y 2
+
+
+b1 + h1
+c1 =
+.
+1 + R−1 (Rβ)1/ρ
+
+(25)
+
+Thus, we have solved the two-period life cycle saving problem for the consumption
+function c1 relating the level of consumption to all of the parameters of the problem.
+One of the surprising features of the solution goes by the name of “Fisherian Separation”: Notice that the profile of consumption growth over the lifetime is given by (22)
+regardless of the shape of the income profile. For two consumers with the same total
+amount of lifetime wealth (combined b 1 and h 1 , the level and growth rates of consumption over the lifetime will be identical whether the consumer’s lifetime wealth is entirely
+
+4
+
+concentrated in the first period (that is, h 1 = 0), entirely concentrated in the last period (b 1 = 0), split half-and-half, or organized any other way. Fisherian Separation
+is a pervasive feature of models that combine perfect foresight and a lack of liquidity
+constraints.
+A common assumption (for simplicity, not realism) is that ρ = 1, which is equivalent
+to assuming that the utility function is logarithmic:2
+ 1−ρ 
+c
+(26)
+lim
+= log c.
+ρ→1 1 − ρ
+In this case it turns out that we can simply substitute ρ = 1 into the solution for
+consumption, obtaining
+
+
+b1 + h1
+.
+(27)
+c1 =
+1+β
+
+2 Graphical Analysis
+The classic graphical analysis of this problem is shown in figure 1.
+The top figure depicts a situation in which all of the consumer’s lifetime income is
+earned in the first period of life. The budget constraint in the initial situation, associated with a “Low R”, yields an optimal consumption choice labeled as point A where
+the budget constraint is tangent to the indifference curve. When the interest factor is
+increased to the “High R” situation, the optimal consumption choice moves to point C.
+Note first that if all income is earned in the first period of life, an increase in the interest
+factor is unambiguously good for the consumer - the set of consumption possibilities is
+strictly larger.
+Second, the movement from point A to point C can be decomposed into two parts:
+an income effect AB and a substitution effect BC.
+Call the low and the high interest factors respectively R and R̄.
+The income effect is the answer to the question “Suppose we wanted to change lifetime
+value by the same amount as it is changed by going from R to R̄, but we wanted to
+achieve this change in value at the initial interest factor R. Supposing we gave the
+consumer enough extra initial resources to achieve the change in value, how would their
+consumption allocation change?”
+In order to relate this back to the algebraic analysis above, it will be useful to rewrite
+lifetime value as a function simply of initial resources and the interest factor (taking
+y 1 , y 2 and other parts of the problem as given):
+V∗ (b 1 , R) = u(c∗1 (b 1 , R)) + βu(c∗2 (b 1 , R))
+
+(28)
+
+Using this function, the income effect is obtained as the value of ∆b 1 in the equation
+V∗ (b 1 + ∆b 1 , R) = V∗ (b 1 , R̄).
+The substitution effect is the answer to the question, “Staying on the new indifference
+curve, how much does the allocation of consumption change as a consequence of the
+2
+
+See math fact [CRRALim]in MathFacts.
+
+5
+
+difference in interest factors between R and R̄?” This is captured in the movement from
+B to C.
+Note that the income and the substitution effects on c 1 are opposite in sign. A higher
+interest factor gives consumers the incentive to substitute future for current consumption
+(c 1 is lower at point C than at B). But a higher interest factor also gives consumers
+the ability to consume more in both periods. Whether c 1 rises or falls in response to
+the increase in interest factors will depend on the relative magnitudes of the income and
+substitution effects.
+The lower figure shows a similar experiment, with the sole difference that the consumer’s lifetime resources are exclusively concentrated in period 2.
+In this case, the period 1 consumer must borrow against future income in order to
+consume anything. An increase in interest factors is therefore unambiguously bad (the
+available set of consumption choices is strictly smaller).
+The optimal choice again moves from point A to point C. However, we now decompose
+the movement into three parts. The first part is called the human wealth effect. It
+captures the fact that the present discounted value of lifetime resources P1 (y) is smaller
+when interest rates are higher; the magnitude of the change in human wealth is depicted
+on the horizontal axis of the figure. The human wealth effect is the consequence that
+an equivalent change in lifetime resources would have in the absence of any change in
+interest factors. So the human wealth effect takes the consumer from point A to point
+D.
+Notice that once we have computed the human wealth effect, if we treat point D as the
+starting point of our analysis, the remaining analysis is identical to that for the upper
+figure: We can increase the interest factor from R to R̄, which causes the equilibrium
+point to change from point D to point C, a movement that can be decomposed into an
+income effect DB (analogous to the income effect AB in the original analysis) and a
+substitution effect BC.
+The terminology here is a modification (refinement) of the terminology often employed
+in micro textbooks, where the “income effect” is defined in a way that would incorporate
+both what I am calling the income effect and what I am calling the human wealth effect.
+The reason to make this distinction is that it is important to distinguish between
+effects on behavior caused by the fact that the discounted value of future income is
+changed, and effects caused by the fact that the income that will be earned on savings is
+different. Summers (1981) vigorously made the point that in standard life cycle models,
+the quantitative magnitude of the human wealth effect dwarfs the size of either the
+income or the substitution effects, because for most people most of their lifetime income
+is in the future.
+
+References
+Fisher, Irving (1930): The Theory of Interest. MacMillan, New York.
+Samuelson, Paul A (1937): “A note on measurement of utility,” The Review of Economic Studies, 4(2), 155–161.
+
+6
+
+Figure 1: Fisher Figure Analysis
+
+C2
+Income: 8Y1 , 0<
+
+High R
+
+Income Effect: AB
+Substitution Effect: BC
+Total Effect: AB+BC=AC
+
+
+
+C
+
+·
+
+B
+
+·
+
+
+
+A
+
+Low R
+
+·
+
+Y1
+
+C1
+
+C2
+Y2
+Low R
+
+Income: 80, Y2 <
+
+
+
+HW Effect: AD
+Income Effect: DB
+Substitution Effect: BC
+Total Effect: AD+DB+BC=AC
+
+
+High R
+A
+
+·
+
+C
+
+·
+D
+
+B
+
+·
+
+·
+
+DH
+
+7
+
+C1
+
+Samuelson, Paul A. (1958): “An Exact Consumption-Loan Model of Interest with
+or without the Social Contrivance of Money,” Journal of Political Economy, 66(6),
+467–482.
+Summers, Lawrence H. (1981): “Capital Taxation and Accumulation in a Life Cycle
+Growth Model,” American Economic Review, 71(4), 533–544, http://www.jstor.
+org/stable/1806179.
+
+8
+

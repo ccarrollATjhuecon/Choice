@@ -625,6 +625,3 @@ private
 
 # emacs .el files
 *.el
-
-# myst
-_build

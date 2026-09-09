@@ -1,66 +1,58 @@
-% variables:
-%% principles:
-%% - Levels (Lvl) are boldface italic
-%% - Normalized (Nrm) are plain
-%% - Aggregate variables are marked by Agg and are upper case
-%% - Individual variables are marked by Ind and are lower case
-%% - The combination of Ind and Agg is marked by All
-%% - If the problem has only one shock, the Ind and Agg can be omitted
+{% raw %}
 
-\newcommand{\aLvl}{\boldsymbol{\mathit{a}}}
-\newcommand{\bLvl}{\boldsymbol{\mathit{b}}}
-\newcommand{\cLvl}{\boldsymbol{\mathit{c}}}
-\newcommand{\dLvl}{\boldsymbol{\mathit{d}}}
-\newcommand{\eLvl}{\boldsymbol{\mathit{e}}}
-\newcommand{\fLvl}{\boldsymbol{\mathit{f}}}
-\newcommand{\gLvl}{\boldsymbol{\mathit{g}}}
-\newcommand{\hLvl}{\boldsymbol{\mathit{h}}}
-\newcommand{\iLvl}{\boldsymbol{\mathit{i}}}
-\newcommand{\jLvl}{\boldsymbol{\mathit{j}}}
-\newcommand{\kLvl}{\boldsymbol{\mathit{k}}}
-\newcommand{\mLvl}{\boldsymbol{\mathit{m}}}
-\newcommand{\nLvl}{\boldsymbol{\mathit{n}}}
-\newcommand{\oLvl}{\boldsymbol{\mathit{o}}}
-\newcommand{\pLvl}{\boldsymbol{\mathit{p}}}
-\newcommand{\qLvl}{\boldsymbol{\mathit{q}}}
-\newcommand{\rLvl}{\boldsymbol{\mathit{r}}}
-\newcommand{\sLvl}{\boldsymbol{\mathit{s}}}
-\newcommand{\tLvl}{\boldsymbol{\mathit{t}}}
-\newcommand{\uLvl}{\boldsymbol{\mathit{u}}}
-\newcommand{\vLvl}{\boldsymbol{\mathit{v}}}
-\newcommand{\wLvl}{\boldsymbol{\mathit{w}}}
-\newcommand{\xLvl}{\boldsymbol{\mathit{x}}}
-\newcommand{\yLvl}{\boldsymbol{\mathit{y}}}
-\newcommand{\zLvl}{\boldsymbol{\mathit{z}}}
+\newcommand{\aLvl}{\pmb{a}}}
+\newcommand{\bLvl}{\pmb{b}}}
+\newcommand{\cLvl}{\pmb{c}}}
+\newcommand{\dLvl}{\pmb{d}}}
+\newcommand{\eLvl}{\pmb{e}}}
+\newcommand{\fLvl}{\pmb{f}}}
+\newcommand{\gLvl}{\pmb{g}}}
+\newcommand{\hLvl}{\pmb{h}}}
+\newcommand{\iLvl}{\pmb{i}}}
+\newcommand{\jLvl}{\pmb{j}}}
+\newcommand{\kLvl}{\pmb{k}}}
+\newcommand{\mLvl}{\pmb{m}}}
+\newcommand{\nLvl}{\pmb{n}}}
+\newcommand{\oLvl}{\pmb{o}}}
+\newcommand{\pLvl}{\pmb{p}}}
+\newcommand{\qLvl}{\pmb{q}}}
+\newcommand{\rLvl}{\pmb{r}}}
+\newcommand{\sLvl}{\pmb{s}}}
+\newcommand{\tLvl}{\pmb{t}}}
+\newcommand{\uLvl}{\pmb{u}}}
+\newcommand{\vLvl}{\pmb{v}}}
+\newcommand{\wLvl}{\pmb{w}}}
+\newcommand{\xLvl}{\pmb{x}}}
+\newcommand{\yLvl}{\pmb{y}}}
+\newcommand{\zLvl}{\pmb{z}}}
 
-\newcommand{\ALvl}{\boldsymbol{\mathit{A}}}
-\newcommand{\BLvl}{\boldsymbol{\mathit{B}}}
-\newcommand{\CLvl}{\boldsymbol{\mathit{C}}}
-\newcommand{\DLvl}{\boldsymbol{\mathit{D}}}
-\newcommand{\ELvl}{\boldsymbol{\mathit{E}}}
-\newcommand{\FLvl}{\boldsymbol{\mathit{F}}}
-\newcommand{\GLvl}{\boldsymbol{\mathit{G}}}
-\newcommand{\HLvl}{\boldsymbol{\mathit{H}}}
-\newcommand{\ILvl}{\boldsymbol{\mathit{I}}}
-\newcommand{\JLvl}{\boldsymbol{\mathit{J}}}
-\newcommand{\KLvl}{\boldsymbol{\mathit{K}}}
-\newcommand{\LLvl}{\boldsymbol{\mathit{L}}}
-\newcommand{\MLvl}{\boldsymbol{\mathit{M}}}
-\newcommand{\NLvl}{\boldsymbol{\mathit{N}}}
-\newcommand{\OLvl}{\boldsymbol{\mathit{O}}}
-\newcommand{\PLvl}{\boldsymbol{\mathit{P}}}
-\newcommand{\QLvl}{\boldsymbol{\mathit{Q}}}
-\newcommand{\RLvl}{\boldsymbol{\mathit{R}}}
-\newcommand{\SLvl}{\boldsymbol{\mathit{S}}}
-\newcommand{\TLvl}{\boldsymbol{\mathit{T}}}
-\newcommand{\ULvl}{\boldsymbol{\mathit{U}}}
-\newcommand{\VLvl}{\boldsymbol{\mathit{V}}}
-\newcommand{\WLvl}{\boldsymbol{\mathit{W}}}
-\newcommand{\XLvl}{\boldsymbol{\mathit{X}}}
-\newcommand{\YLvl}{\boldsymbol{\mathit{Y}}}
-\newcommand{\ZLvl}{\boldsymbol{\mathit{Z}}}
+\newcommand{\ALvl}{\pmb{A}}}
+\newcommand{\BLvl}{\pmb{B}}}
+\newcommand{\CLvl}{\pmb{C}}}
+\newcommand{\DLvl}{\pmb{D}}}
+\newcommand{\ELvl}{\pmb{E}}}
+\newcommand{\FLvl}{\pmb{F}}}
+\newcommand{\GLvl}{\pmb{G}}}
+\newcommand{\HLvl}{\pmb{H}}}
+\newcommand{\ILvl}{\pmb{I}}}
+\newcommand{\JLvl}{\pmb{J}}}
+\newcommand{\KLvl}{\pmb{K}}}
+\newcommand{\LLvl}{\pmb{L}}}
+\newcommand{\MLvl}{\pmb{M}}}
+\newcommand{\NLvl}{\pmb{N}}}
+\newcommand{\OLvl}{\pmb{O}}}
+\newcommand{\PLvl}{\pmb{P}}}
+\newcommand{\QLvl}{\pmb{Q}}}
+\newcommand{\RLvl}{\pmb{R}}}
+\newcommand{\SLvl}{\pmb{S}}}
+\newcommand{\TLvl}{\pmb{T}}}
+\newcommand{\ULvl}{\pmb{U}}}
+\newcommand{\VLvl}{\pmb{V}}}
+\newcommand{\WLvl}{\pmb{W}}}
+\newcommand{\XLvl}{\pmb{X}}}
+\newcommand{\YLvl}{\pmb{Y}}}
+\newcommand{\ZLvl}{\pmb{Z}}}
 
-%%  Ratios to permanent income are normal face
 \newcommand{\aNrm}{a}
 \newcommand{\bNrm}{b}
 \newcommand{\cNrm}{c}
@@ -71,11 +63,9 @@
 \newcommand{\iNrm}{i}
 \newcommand{\jNrm}{j}
 \newcommand{\kNrm}{k}
-\newcommand{\lNrm}{l}
 \newcommand{\mNrm}{m}
-\newcommand{\oNrm}{o}
 \newcommand{\pNrm}{p}
-\newcommand{\qNrm}{q}
+\newcommand{\oNrm}{o}
 \newcommand{\sNrm}{s}
 \newcommand{\vNrm}{v}
 \newcommand{\yNrm}{y}
@@ -99,7 +89,6 @@
 \newcommand{\YNrm}{Y}
 \newcommand{\ZNrm}{Z}
 
-%% Individual-level (idosyncratic) variables
 \newcommand{\permShkInd}{\psi}     % (purely) permanent
 \newcommand{\permShk}{\permShkInd} % unspecified (but only one) shock
 \newcommand{\PermShk}{\PermShkAgg} % unspecified (but only one) shock
@@ -114,31 +103,27 @@
 \newcommand{\tranShkMin}{\Min{\xi}}
 \newcommand{\tranShkMax}{\Max{\xi}}
 
-%% Transitory shock for employed individuals
 \newcommand{\tranShkEmp}{\theta}     % ind
 \newcommand{\TranShkEmp}{\Theta}     % agg
 \newcommand{\tranShkEmpMin}{\Min{\tranShkEmp}}    
 \newcommand{\tranShkEmpMax}{\Max{\tranShkEmp}}    
 \newcommand{\IncUnemp}{\mu}  % Income in unemployment
 
-%% Agg variables (also affect individuals)
 \newcommand{\TranShkAgg}{\Theta}   % 
 \newcommand{\PermShkAgg}{\Psi}  % 
 
-%% Shock std and var
 \newcommand{\std}{\sigma}
 \newcommand{\tranShkIndStd}{\std_{\tranShkInd}}     % 
 \newcommand{\tranShkIndVar}{\std^{2}_{\tranShkInd}} % 
 \newcommand{\TranShkAggStd}{\std_{\TranShkAgg}}     %
 \newcommand{\TranShkAggVar}{\std^{2}_{\TranShkAgg}} %
 
-%% Combo variables (combining Ind and Agg) 
 \newcommand{\PermShkAll}{\mathbf{\Psi}}
 \newcommand{\PermShkAllStd}{\std_{\PermShkAll}}
 \newcommand{\PermShkAllVar}{\std^{2}_{\PermShkAll}}
 
-\newcommand{\PermLvlAgg}{\boldsymbol{\mathit{P}}}      % 
-\newcommand{\permLvlInd}{\boldsymbol{\mathit{p}}}      % 
+\newcommand{\PermLvlAgg}{\pmb{P}}}      % 
+\newcommand{\permLvlInd}{\pmb{p}}}      % 
 \newcommand{\permLvl}{\permLvlInd}      % 
 \newcommand{\PermLvl}{\PermLvlAgg}      % 
 \newcommand{\PermLvlAll}{\mathfrak{P}}
@@ -148,14 +133,12 @@
 \newcommand{\tranShkAllStd}{\std_{\tranShkAll}}
 \newcommand{\tranShkAllVar}{\std^{2}_{\tranShkAll}}
 
-%% MPC min and max values
 \newcommand{\MPCmin}{\Min{\MPC}}
 \newcommand{\MPCmax}{\Max{\MPC}}
 \newcommand{\MPCmaxmax}{\Max{\Max{\MPC}}}
 \newcommand{\MPCmaxmin}{\Max{\Min{\MPC}}}
 \newcommand{\MPCminmin}{\Min{\Min{\MPC}}}
 
-%% Growth factors
 \newcommand{\PermGroFacAgg}{\mathscr{G}}
 \newcommand{\permGroFacInd}{\mathit{G}}
 \newcommand{\PermGroFac}{\mathcal{G}}
@@ -167,8 +150,6 @@
 \newcommand{\WGroFac}{\ensuremath{\mathrm{G}}}
 \newcommand{\WGroRte}{\mathrm{g}}
 
-%% Other factors and rates 
-%%% probability of remaining \Alive is 1 - prob of dying
 \newcommand{\Alive}{\mathcal{L}}\renewcommand{\Alive}{\mathcal{L}}
 \newcommand{\diePrb}{\mathsf{d}} % Continuous time death rate (annual)
 \newcommand{\DiePrb}{\mathsf{D}} % Discrete-time one-period death rate
@@ -228,7 +209,7 @@
 \newcommand{\risky}{\mathbf{r}}         % The arithmetic return rate E[\Risky] - 1
 \newcommand{\riskyELog}{\risky}         % The arithmetic return rate \Risky - 1
 \newcommand{\riskyELev}{\boldsymbol{r}} % The geometric  return rate \log \Risky
-\newcommand{\riskyshare}{{\varsigma}}
+\newcommand{\riskyshare}{\varsigma}
 \newcommand{\riskyvar}{\std^{2}_{\risky}}
 \newcommand{\Rport}{\mathfrak{R}}       % Portfolio -weighted return
 \newcommand{\rport}{\mathfrak{r}}
@@ -245,37 +226,36 @@
 \newcommand{\MPSmin}{\pZero^{1/\CRRA} \RPFac}
 \newcommand{\MPSmax}{\RPFac}
 
-\newcommand{\PDV}{{\mathbb{P}}} % 
-\newcommand{\Wage}{{\mathsf{W}}}
-\newcommand{\wage}{{\mathsf{w}}}
+\newcommand{\PDV}{\mathbb{P}} % 
+\newcommand{\Wage}{\mathsf{W}
+\newcommand{\wage}{\mathsf{w}
 
-\newcommand{\TaxAmt}{T}
-\newcommand{\TaxRte}{\tau}
-\newcommand{\tax}{\tau}
-\newcommand{\taxFree}{\cancel{\tax}}
+\newcommand{\TaxLev}{T}
+\newcommand{\Tax}{\tau}
+\newcommand{\TaxFree}{\cancel{\Tax}}
 
 \newcommand{\Alt}{\grave}
 
-\newcommand{\urate}{{\mho}}
-\newcommand{\erate}{{\cancel{\mho}}}
-\newcommand{\unins}{{\zeta}}
+\newcommand{\urate}{\mho}
+\newcommand{\erate}{\cancel{\mho}}
+\newcommand{\unins}{\zeta}
 
 \newcommand{\Labor}{\mathrm{L}}
 \newcommand{\labor}{\ell}
 
-\newcommand{\EEndMap}{{\mathsf{E}}}
+\newcommand{\EEndMap}{\mathsf{E}}
 
-\newcommand{\CEndFunc}{{\mathfrak{C}}}
-\newcommand{\cEndFunc}{{\mathfrak{c}}}
+\newcommand{\CEndFunc}{\mathfrak{C}}
+\newcommand{\cEndFunc}{\mathfrak{c}}
 
 \newcommand{\uFuncInv}{\rotatebox{180}{$\uFunc$}}
-\newcommand{\muFuncInv}{{\rotatebox{180}{$\uFunc$}}}
+\newcommand{\muFuncInv}{\rotatebox{180}{$\uFunc$}}
 
 \newcommand{\HARKdocs}{\href{https://docs.econ-ark.org}{documentation}}
 \newcommand{\HARKrepo}{\texttt{\href{https://github.com/econ-ark/HARK}{HARK}}}
 
-\newcommand{\Rnorm}{{\mathcal{R}}}    % Normalized version of riskless return factor
-\newcommand{\rnorm}{{\mathit{r}}}    % Normalized version of riskless rate of return
+\newcommand{\Rnorm}{\mathcal{R}}    % Normalized version of riskless return factor
+\newcommand{\rnorm}{\mathit{r}}    % Normalized version of riskless rate of return
 
 \newcommand{\EpremLog}{\varphi} % Not using regular \eprem because want to distinguish between \varphi = log E_{t}[\Phi_{t+1}] and \phi_{t} = E[\log \Phi_{t}]
 \newcommand{\EPrem}{\pmb{\varphi}} % equity premium
@@ -283,11 +263,10 @@
 
 \newcommand{\weight}{\omega}
 
-% oddities
-\newcommand{\FDist}{{\mathcal{F}}}
-\newcommand{\fDist}{{\mathcal{f}}}
+\newcommand{\FDist}{\mathcal{F}}
+\newcommand{\fDist}{\mathcal{f}}
 
-\newcommand{\aMin}{{\Min{\aNrm}}}
+\newcommand{\aMin}{\Min{\aNrm}}
 
 \newcommand{\Nrml}{}\renewcommand{\Nrml}{\mathcal{N}}
 
@@ -295,40 +274,25 @@
 \newcommand{\TargetNrm}{\hat}   % Target 
 \newcommand{\mTrgNrm}{\TargetNrm{\mNrm}} % m where E[m_{t+1}]=m_{t}
 
-% pulled in from econtexShortcuts
 
 \newcommand{\cFuncAbove}{}
 \renewcommand{\cFuncAbove}{\Max{\cFunc}} 
 \newcommand{\cFuncBelow}{}
 \renewcommand{\cFuncBelow}{\Min{\cFunc}} 
 
-% Needed for cctwMoM
 
 \newcommand{\chiFunc}{\pmb{\chi}}
-\newcommand{\Chi}{{\mathrm{X}}} % capital chi is sometimes useful, and not native to LaTeX
+\newcommand{\Chi}{\mathrm{X}} % capital chi is sometimes useful, and not native to LaTeX
 
-% From NARK
 
-% Let's define what we use the different LaTeX fonts for.
 
-% Research:
-% The (math) fonts that have a complete set of both upper and lower case characrers are:
-% - \mathrm (default), \mathscr, \mathbb, \mathsf, \mathbf, \mathit, \mathcal, \mathfrak, \mathbb
-% The following fonts do not have lowercase Greek letters
-% - \mathcal, \mathfrak, \mathbb
-% - use \mathcal, \mathfrak, \mathbb for 'oddities': things outside the defined scheme
 
-% Evolving ideas:
-% - FOR GREEK CHARACTERS ONLY: Use upper and lower case for Factor vs Rate
 \newcommand{\PopGroFac}{}
 \renewcommand{\PopGroFac}{\Xi}
 
 \newcommand{\popGroRte}{}
 \renewcommand{\popGroRte}{\xi}
 
-% There are two exceptions: 
-% - Roman G is a Growth factor and Roman g is the rate
-% - Roman R is a Growth factor and Roman r is the rate
 
 \newcommand{\PtyGroFac}{}
 \renewcommand{\PtyGroFac}{\mathscr{G}}
@@ -342,23 +306,20 @@
 \newcommand{\ptyGroRte}{}
 \renewcommand{\ptyGroRte}{g}
 
-% agg vs ind?  upper vs lower conflicts with upper vs lower for factors and rates
 
 \newcommand{\Reals}{}
 \renewcommand{\Reals}{\mathbb{R}}
 
-% ------------------ Operators ------------------ 
-% Map between function spaces, blackboard boldface
 
 \newcommand{\TMap}{}
 \renewcommand{\TMap}{\mathbb{T}}                  % Bellman operator for normalized problem
-\newcommand{\Ex}{{\mathbb{E}}} % Expectations operator
-\newcommand{\Mean}{{\mathbb{M}}} % Mean operator
+\newcommand{\Ex}{\mathbb{E}} % Expectations operator
+\newcommand{\Mean}{\mathbb{M}} % Mean operator
 \newcommand{\cncl}{} % cancellation
-\renewcommand\cncl[1]{{\cancel{#1}}}
+\renewcommand\cncl[1]{\
+\newcomm}}
 
 
-% ------------------ Modifiers ------------------ 
 
 \newcommand{\cnstr}[1]{\grave{#1}} %% Constrained
 \newcommand{\avg}{\bar}
@@ -369,19 +330,13 @@
 \newcommand{\Lvl}{\boldsymbol}
 
 
-% ------------------ Relative Time ------------------ 
 \newcommand{\nxt}{\texttt{next}}
 \newcommand{\lst}{\texttt{last}}
 
-% Normalized return is special because G is normalizer
-% If there are any instances of RNrm that have been missed, make them stick out like a sore thumb
 \newcommand{\RNrm}{\cancel{\mathbf{R}}} 
 \newcommand{\RNrmByG}{\mathscr{R}}
 \newcommand{\RNrmByGRnd}{\Rnd{\mathscr{R}}}
 
-% Functions
-% - Functions are Roman not italicized
-%% systematic
 \newcommand{\aFunc}{\mathrm{a}}
 \newcommand{\bFunc}{\mathrm{b}}
 \newcommand{\cFunc}{\mathrm{c}}
@@ -406,7 +361,6 @@
 \newcommand{\zFunc}{\mathrm{z}}
 
 \newcommand{\vFuncLvl}{\mathbf{v}}
-% level idiosyncratic
 \newcommand{\cFuncLvl}{}  % in case already defined 
 \renewcommand{\cFuncLvl}{\boldsymbol{\mathrm{c}}}   % consumption function 
 \renewcommand{\vFuncLvl}{\boldsymbol{\mathrm{v}}}   % value function
@@ -438,17 +392,12 @@
 \newcommand{\YFunc}{\mathrm{Y}}
 \newcommand{\ZFunc}{\mathrm{Z}}
 
-%% ad-hoc
 \newcommand{\cov}{}\renewcommand{\cov}{\textup{cov}}
 
-% Variables
 
 \newcommand{\CDF}{\mathcal{F}}
 
-% urls
-% - Home of Econ-ARK
 \newcommand{\ARKurl}{\href{https://econ-ark.org}{Econ-ARK}}
 \newcommand{\REMARK}{\href{https://github.com/econ-ark/REMARK}{REMARK}}
 
-% Add default link for html material at github llorracc
-%\newcommand{\llorraccio}[1]{\href{https://llorracc.github.io/#1}{\texttt{#1}}}
+{% endraw %}

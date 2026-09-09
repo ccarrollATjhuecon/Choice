@@ -20,6 +20,7 @@
 \providecommand{\kLvl}{\boldsymbol{\mathit{k}}}
 \providecommand{\mLvl}{\boldsymbol{\mathit{m}}}
 \providecommand{\nLvl}{\boldsymbol{\mathit{n}}}
+\providecommand{\oLvl}{\boldsymbol{\mathit{o}}}
 \providecommand{\pLvl}{\boldsymbol{\mathit{p}}}
 \providecommand{\qLvl}{\boldsymbol{\mathit{q}}}
 \providecommand{\rLvl}{\boldsymbol{\mathit{r}}}
@@ -70,8 +71,11 @@
 \providecommand{\iNrm}{i}
 \providecommand{\jNrm}{j}
 \providecommand{\kNrm}{k}
+\providecommand{\lNrm}{l}
 \providecommand{\mNrm}{m}
+\providecommand{\oNrm}{o}
 \providecommand{\pNrm}{p}
+\providecommand{\qNrm}{q}
 \providecommand{\sNrm}{s}
 \providecommand{\vNrm}{v}
 \providecommand{\yNrm}{y}
@@ -88,6 +92,7 @@
 \providecommand{\JNrm}{J}
 \providecommand{\KNrm}{K}
 \providecommand{\MNrm}{M}
+\providecommand{\NNrm}{N}
 \providecommand{\PNrm}{P}
 \providecommand{\SNrm}{S}
 \providecommand{\VNrm}{V}
@@ -158,6 +163,9 @@
 \providecommand{\PermGroFacAdj}{\Min{\PermGroFac}}
 \providecommand{\PermGroFacuAdj}{\Min{\Min{\PermGroFac}}}
 \providecommand{\PermGroRte}{g}
+\providecommand{\PermGroRte}{g}
+\providecommand{\WGroFac}{\ensuremath{\mathrm{G}}}
+\providecommand{\WGroRte}{\mathrm{g}}
 
 %% Other factors and rates 
 %%% probability of remaining \Alive is 1 - prob of dying
@@ -207,7 +215,7 @@
 \providecommand{\CRRA}{\rho}
 \providecommand{\MPC}{\kappa}
 \providecommand{\MPCFunc}{\pmb{\kappa}}
-\providecommand{\pZero}{q}
+\providecommand{\pZero}{\wp}
 
 \providecommand{\rfree}{\mathsf{r}}   % The net return rate on the safe asset
 \providecommand{\Rfree}{\mathsf{R}}   % The return factor on the safe asset 
@@ -225,9 +233,8 @@
 \providecommand{\Rport}{\mathfrak{R}}       % Portfolio -weighted return
 \providecommand{\rport}{\mathfrak{r}}
 
-\providecommand{\uPPP}{{{\mathrm{u}^{\prime\prime\prime}}}}
-\providecommand{\uPP}{{{\mathrm{u}^{\prime\prime}}}}
-\providecommand{\uP}{{{\mathrm{u}^{\prime}}}}
+\providecommand{\uPP}{\mathrm{u}^{\prime\prime}}
+\providecommand{\uP}{\mathrm{u}^{\prime}}
 \providecommand{\util}{u}
 
 \providecommand{\Kap}{K}
@@ -242,9 +249,10 @@
 \providecommand{\Wage}{{\mathsf{W}}}
 \providecommand{\wage}{{\mathsf{w}}}
 
-\providecommand{\TaxLev}{T}
-\providecommand{\Tax}{}
-\providecommand{\TaxFree}{{\cancel{\Tax}}}
+\providecommand{\TaxAmt}{T}
+\providecommand{\TaxRte}{\tau}
+\providecommand{\tax}{\tau}
+\providecommand{\taxFree}{\cancel{\tax}}
 
 \providecommand{\Alt}{\grave}
 
@@ -360,14 +368,6 @@
 \providecommand{\Opt}{}\renewcommand{\Opt}{\breve}
 \providecommand{\Lvl}{\boldsymbol}
 
-
-% ------------------ Theorems ------------------ 
-\newtheorem{assumption}{Assumption}
-\newtheorem{claim}{Claim}
-\newtheorem{proposition}{Proposition}
-\newtheorem{corollary}{Corollary}
-\newtheorem{fact}{Fact}
-\newtheorem{remark}{Remark}
 
 % ------------------ Relative Time ------------------ 
 \providecommand{\nxt}{\texttt{next}}
