@@ -1,5 +1,6 @@
 ########################################################################
-# Rebuild the syllabus PDF and the web version in docs/, on every push
+# Rebuild the syllabus PDF and the web version in Syllabus/docs/, on
+# every push
 # that touches a source file.
 #
 # THE POINT OF THIS FILE: docs/ is build output, and from 2023-02-27 to
@@ -10,6 +11,13 @@
 #
 # It runs the SAME build-web.sh that a human runs, so the two cannot
 # drift apart. Fix the script, not this file.
+#
+# The syllabus moved into Syllabus/ when its repository was merged into
+# this one. Workflows only run from the repository root, so this file
+# lives here while everything it acts on lives one level down. Every path
+# below is therefore prefixed -- and a missed prefix fails SILENTLY, by
+# simply never triggering, which is the exact failure this file exists
+# to prevent.
 ########################################################################
 
 name: build-web
@@ -17,18 +25,18 @@ name: build-web
 on:
   push:
     branches: [master]
-    # Deliberately NOT docs/** or Syllabus.pdf: those are what this
+    # Deliberately NOT Syllabus/docs/** or Syllabus/Syllabus.pdf: those are what this
     # workflow writes, and listing them would make it trigger itself.
     paths:
-      - 'Syllabus.tex'
-      - 'Syllabus.sty'
-      - 'econtexRoot.texinput'
-      - 'latexmkrc'
-      - '*.bib'
-      - 'Sections/**'
-      - 'Resources/**'
-      - 'texmf-local/**'
-      - 'build-web.sh'
+      - 'Syllabus/Syllabus.tex'
+      - 'Syllabus/Syllabus.sty'
+      - 'Syllabus/econtexRoot.texinput'
+      - 'Syllabus/latexmkrc'
+      - 'Syllabus/*.bib'
+      - 'Syllabus/Sections/**'
+      - 'Syllabus/Resources/**'
+      - 'Syllabus/texmf-local/**'
+      - 'Syllabus/build-web.sh'
       - '.github/workflows/build-web.yml'
   workflow_dispatch:        # and by hand, from the Actions tab
 
@@ -36,8 +44,10 @@ permissions:
   contents: write           # needed to push the regenerated docs/
 
 concurrency:
-  group: build-web
+  group: push-to-master
   cancel-in-progress: false # never abandon a half-finished push
+  # Shared with markdown-lint.yml: both jobs commit and push, and without
+  # one group they race on a push to master.
 
 jobs:
   build:
@@ -56,24 +66,25 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Build
-        run: ./build-web.sh
+        run: ./Syllabus/build-web.sh
 
       - name: Sanity-check the output
         # A make4ht failure can still leave a small, wrong index.html
         # behind, so check content rather than merely exit status.
         run: |
-          test -s Syllabus.pdf
-          test -s docs/index.html
-          grep -q 'Teaching Assistant' docs/index.html
-          grep -q 'jhuecon.org_v2kso2hp1memk0vka1gomvorm8' docs/index.html
+          test -s Syllabus/Syllabus.pdf
+          test -s Syllabus/docs/index.html
+          grep -q 'Teaching Assistant' Syllabus/docs/index.html
+          grep -q 'jhuecon.org_v2kso2hp1memk0vka1gomvorm8' Syllabus/docs/index.html
 
       - name: Commit the regenerated output
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          # Syllabus.pdf is in .gitignore but tracked, so it needs -f.
-          git add -A docs
-          git add -f Syllabus.pdf
+          # -f on both: this repo's .gitignore matches *.4ct, *.4tc, *.idv,
+          # *.lg and *.xref, which Syllabus/docs tracks, and Syllabus.pdf.
+          git add -A -f -- Syllabus/docs
+          git add -f Syllabus/Syllabus.pdf
           if git diff --cached --quiet; then
             echo 'docs/ already current - nothing to commit'
             exit 0
