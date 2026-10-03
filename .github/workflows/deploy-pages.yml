@@ -27,6 +27,15 @@ on:
       - 'web/**'
       - 'Syllabus/docs/**'
       - '.github/workflows/deploy-pages.yml'
+  # A rebuilt syllabus arrives as a commit from build-web, pushed with the workflow's own
+  # token -- and a push made with that token starts no other workflow, so the push trigger
+  # above never sees it (nor would it without the commit's [skip ci]). Until 2026-09-30
+  # every rebuild therefore waited for someone to deploy by hand. Deploy when build-web
+  # finishes instead; the checkout below then gets master as it stands, rebuild included.
+  workflow_run:
+    workflows: [build-web]
+    types: [completed]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -41,6 +50,8 @@ concurrency:
 
 jobs:
   deploy:
+    # After build-web, only if it succeeded: a failed build leaves the published site as it was.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

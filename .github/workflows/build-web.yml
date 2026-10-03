@@ -95,6 +95,8 @@ jobs:
             exit 0
           fi
           # [skip ci] is belt and braces; the paths: filter above is what
-          # actually stops this from triggering itself.
+          # actually stops this from triggering itself. It also means this
+          # push does not publish anything: deploy-pages runs when this
+          # workflow finishes (its workflow_run trigger), not on this push.
           git commit -m 'Rebuild syllabus web version [skip ci]'
           git push
