@@ -10,6 +10,9 @@ this repository.
 The syllabus is built from `Syllabus/`; the published site is assembled from
 `web/` and `Syllabus/docs/` by `.github/workflows/deploy-pages.yml`.
 
+`styles/` holds the plot styles of course notebooks, one per notebook and named after it. Each
+notebook downloads its style by URL when it runs, so a file there must not be renamed or moved.
+
 The LaTeX handouts that used to be in `LectureNotes/` are on the branch
 [`archive/lecturenotes-demacro-2024`](https://github.com/ccarrollATjhuecon/Choice/tree/archive/lecturenotes-demacro-2024/LectureNotes).
 They were three handouts of seventy, from a conversion attempt that stalled in
