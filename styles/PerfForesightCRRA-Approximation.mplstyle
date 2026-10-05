@@ -1,7 +1,0 @@
-# Plot style for the notebook PerfForesightCRRA-Approximation, which downloads this file by its URL
-# every time it runs. Renaming or moving the file makes the notebook fall back to matplotlib's defaults.
-figure.figsize:    7.5, 4.2
-axes.grid:         True
-grid.alpha:        0.3
-axes.spines.top:   False
-axes.spines.right: False
